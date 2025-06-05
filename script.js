@@ -1,10 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
+    // Substitua o código do menu mobile existente
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
     if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
+        // Fechar menu ao clicar fora dele
+        document.addEventListener('click', function(event) {
+            const isClickInside = mobileMenuButton.contains(event.target) || mobileMenu.contains(event.target);
+            
+            if (!isClickInside && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        mobileMenuButton.addEventListener('click', function(event) {
+            event.stopPropagation(); // Impedir que o evento de clique se propague
             mobileMenu.classList.toggle('hidden');
         });
     }
@@ -237,7 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Configuração das partículas
         const particlesArray = [];
-        const numberOfParticles = 100;
+        // Reduzir o número de partículas em dispositivos móveis
+        const isMobile = window.innerWidth < 768;
+        const numberOfParticles = isMobile ? 30 : 100;
         const colors = ['rgba(59, 130, 246, 0.5)', 'rgba(99, 102, 241, 0.5)', 'rgba(139, 92, 246, 0.5)'];
         
         // Classe para as partículas
@@ -282,14 +295,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Conectar partículas próximas com linhas
         function connect() {
             let opacityValue = 1;
+            // Reduzir a distância de conexão em dispositivos móveis
+            const connectionDistance = isMobile ? 60 : 100;
+            
             for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
+                // Em dispositivos móveis, conectar apenas com as partículas mais próximas
+                const limit = isMobile ? Math.min(a + 10, particlesArray.length) : particlesArray.length;
+                for (let b = a; b < limit; b++) {
                     const dx = particlesArray[a].x - particlesArray[b].x;
                     const dy = particlesArray[a].y - particlesArray[b].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (distance < 100) {
-                        opacityValue = 1 - (distance / 100);
+                    if (distance < connectionDistance) {
+                        opacityValue = 1 - (distance / connectionDistance);
                         ctx.strokeStyle = 'rgba(59, 130, 246, ' + opacityValue + ')';
                         ctx.lineWidth = 1;
                         ctx.beginPath();
@@ -297,6 +315,28 @@ document.addEventListener('DOMContentLoaded', function() {
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
                         ctx.stroke();
                     }
+                }
+            }
+        }
+        
+        // Adicione após a inicialização do canvas
+        const toggleAnimationBtn = document.getElementById('toggle-animation');
+        if (toggleAnimationBtn) {
+            let animationEnabled = true;
+            toggleAnimationBtn.addEventListener('click', function() {
+                animationEnabled = !animationEnabled;
+                const techBackground = document.querySelector('.tech-background');
+                if (techBackground) {
+                    techBackground.style.display = animationEnabled ? 'block' : 'none';
+                }
+            });
+            
+            // Desativar automaticamente em dispositivos móveis
+            if (window.innerWidth < 768) {
+                animationEnabled = false;
+                const techBackground = document.querySelector('.tech-background');
+                if (techBackground) {
+                    techBackground.style.display = 'none';
                 }
             }
         }

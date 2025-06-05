@@ -130,3 +130,41 @@ section#hero {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 640px) {
+    /* Reduzir padding e margens */
+    section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Ajustar tamanho de texto */
+    h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    /* Melhorar espaçamento de elementos */
+    .py-20 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    /* Ajustar gráfico para telas pequenas */
+    .chart-container {
+        height: 280px !important;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Otimizar o fundo tecnológico para dispositivos móveis */
+@media (max-width: 768px) {
+    .tech-background {
+        opacity: 0.4; /* Reduzir ainda mais a opacidade em dispositivos móveis */
+    }
+}

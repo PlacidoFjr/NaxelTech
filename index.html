@@ -22,8 +22,10 @@
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <title>NexoTech Consultoria: TI Estratégica para Novos Escritórios</title>
+    <!-- Modifique as tags de script existentes -->
     <script src="https://cdn.tailwindcss.com" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,6 +39,14 @@
             emailjs.init("YOUR_USER_ID");
         })();
     </script>
+    <!-- Adicione após a div tech-background -->
+    <div class="fixed bottom-4 right-4 z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md" id="toggle-animation">
+        <button class="text-blue-600 focus:outline-none" title="Ativar/Desativar animação de fundo">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+        </button>
+    </div>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <!-- Na seção de serviços, remova este trecho se existir -->
