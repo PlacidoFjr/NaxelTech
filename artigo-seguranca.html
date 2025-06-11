@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Medidas Essenciais de Cibersegurança para Escritórios - NexoTech</title>
+    <meta name="description" content="Proteja seus dados e sua operação com estas práticas fundamentais de segurança digital que todo escritório deveria implementar.">
+    
+    <!-- Script para prevenir flash do modo escuro -->
+    <script>
+        (function() {
+            // Verificar preferência do sistema
+            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            // Verificar preferência salva
+            const savedDarkMode = localStorage.getItem('darkMode');
+            
+            // Aplicar modo escuro baseado na preferência salva ou na preferência do sistema
+            if (savedDarkMode === 'true' || (savedDarkMode === null && prefersDarkMode)) {
+                document.body.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="artigo-seguranca.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="logo-animate text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300">Nexo<span class="text-slate-700">Tech</span></a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#desafio" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">O Desafio</a>
+                <a href="index.html#servicos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Nossos Serviços</a>
+                <a href="index.html#beneficios" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Benefícios</a>
+                <a href="index.html#artigos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Artigos</a>
+                <a href="index.html#contato" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contato</a>
+            </div>
+            <!-- Botão de modo escuro -->
+            <div class="flex items-center space-x-4">
+                <button id="dark-mode-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-300" title="Alternar modo escuro">
+                    <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+    
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg absolute w-full left-0 top-full z-50">
+            <div class="nav-links flex flex-col p-4 space-y-2">
+                <a href="index.html#desafio" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">O Desafio</a>
+                <a href="index.html#servicos" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Nossos Serviços</a>
+                <a href="index.html#beneficios" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Benefícios</a>
+                <a href="index.html#artigos" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Artigos</a>
+                <a href="index.html#contato" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <article class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">5 Medidas Essenciais de Cibersegurança para Escritórios</h1>
+                <p class="text-xl text-slate-600 mb-8">Proteja seus dados e sua operação com estas práticas fundamentais de segurança digital que todo escritório deveria implementar.</p>
+                <div class="flex items-center justify-center space-x-4 text-slate-500">
+                    <span> Publicado em 05 de Julho, 2025</span>
+                    <span> 8 min de leitura</span>
+                </div>
+            </header>
+
+            <div class="prose prose-lg max-w-none">
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+                    <p class="text-blue-800 font-medium">💡 <strong>Dica:</strong> A cibersegurança não é um luxo, é uma necessidade. Pequenos escritórios são alvos frequentes de ataques cibernéticos devido à percepção de menor proteção.</p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">1. Implementação de Autenticação de Dois Fatores (2FA)</h2>
+                <p class="text-slate-700 mb-6">A autenticação de dois fatores adiciona uma camada extra de segurança além da senha tradicional. Mesmo que uma senha seja comprometida, o atacante ainda precisará do segundo fator para acessar a conta.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Como implementar:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Configure 2FA em todas as contas críticas (email, sistemas de gestão, cloud storage)</li>
+                        <li>Use aplicativos autenticadores como Google Authenticator ou Microsoft Authenticator</li>
+                        <li>Evite SMS como segundo fator quando possível (vulnerável a SIM swapping)</li>
+                        <li>Mantenha códigos de backup em local seguro</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">2. Política de Senhas Robustas</h2>
+                <p class="text-slate-700 mb-6">Senhas fracas são a porta de entrada mais comum para ataques. Uma política de senhas bem estruturada é fundamental para a segurança do escritório.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Diretrizes essenciais:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Mínimo de 12 caracteres com combinação de letras, números e símbolos</li>
+                        <li>Senhas únicas para cada sistema/conta</li>
+                        <li>Uso obrigatório de gerenciador de senhas</li>
+                        <li>Alteração imediata de senhas padrão</li>
+                        <li>Renovação periódica de senhas críticas</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">3. Atualizações e Patches de Segurança</h2>
+                <p class="text-slate-700 mb-6">Sistemas desatualizados são vulnerabilidades conhecidas que atacantes exploram regularmente. Manter tudo atualizado é uma defesa básica mas crucial.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Estratégia de atualizações:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Ative atualizações automáticas para sistemas operacionais</li>
+                        <li>Mantenha todos os softwares atualizados (navegadores, antivírus, aplicações)</li>
+                        <li>Implemente um cronograma de verificação mensal</li>
+                        <li>Teste atualizações críticas em ambiente controlado primeiro</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">4. Backup e Recuperação de Dados</h2>
+                <p class="text-slate-700 mb-6">Ransomware e falhas de hardware podem causar perda total de dados. Uma estratégia de backup robusta é sua última linha de defesa.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Regra 3-2-1 de Backup:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>3 cópias</strong> dos dados importantes</li>
+                        <li><strong>2 tipos diferentes</strong> de mídia de armazenamento</li>
+                        <li><strong>1 cópia offsite</strong> (cloud ou local físico diferente)</li>
+                        <li>Teste regular de restauração de backups</li>
+                        <li>Backup automatizado e monitorado</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">5. Treinamento e Conscientização da Equipe</h2>
+                <p class="text-slate-700 mb-6">O fator humano é frequentemente o elo mais fraco na segurança. Funcionários bem treinados são sua primeira linha de defesa contra ataques.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Programa de treinamento:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Identificação de emails de phishing e links suspeitos</li>
+                        <li>Práticas seguras de navegação na internet</li>
+                        <li>Política de uso de dispositivos pessoais (BYOD)</li>
+                        <li>Procedimentos para reportar incidentes de segurança</li>
+                        <li>Simulações regulares de ataques de phishing</li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 mt-12">
+                    <h3 class="text-xl font-semibold text-red-800 mb-4">⚠️ Sinais de Alerta</h3>
+                    <p class="text-red-700">Procure ajuda imediatamente se notar: computadores lentos inexplicavelmente, arquivos criptografados, atividade suspeita em contas, ou emails/mensagens não enviados por você.</p>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-8 mt-12 text-center">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">Precisa de Ajuda com Segurança?</h3>
+                    <p class="text-green-700 mb-6">A NexoTech pode implementar todas essas medidas no seu escritório e criar um plano de segurança personalizado.</p>
+                    <a href="index.html#contato" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 transition-colors duration-300">Fale Conosco</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 py-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 NexoTech Consultoria. Todos os direitos reservados.</p>
+            <p class="mt-2 text-sm">Transformando tecnologia em vantagem competitiva.</p>
+        </div>
+    </footer>
+</body>
+</html>

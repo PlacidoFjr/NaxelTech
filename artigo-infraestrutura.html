@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infraestrutura de TI Moderna para Escritórios - NexoTech</title>
+    <meta name="description" content="Descubra como modernizar a infraestrutura de TI do seu escritório para máxima eficiência e produtividade.">
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="artigo-infraestrutura.css">
+    <script src="script.js" defer></script>
+    <!-- Script para prevenir flash do modo escuro -->
+    <script>
+        (function() {
+            // Verificar preferência do sistema
+            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            // Verificar preferência salva
+            const savedDarkMode = localStorage.getItem('darkMode');
+            
+            // Aplicar modo escuro baseado na preferência salva ou na preferência do sistema
+            if (savedDarkMode === 'true' || (savedDarkMode === null && prefersDarkMode)) {
+                document.body.classList.add('dark');
+            }
+        })();
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="logo-animate text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300">Nexo<span class="text-slate-700">Tech</span></a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#desafio" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">O Desafio</a>
+                <a href="index.html#servicos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Nossos Serviços</a>
+                <a href="index.html#beneficios" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Benefícios</a>
+                <a href="index.html#artigos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Artigos</a>
+                <a href="index.html#contato" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contato</a>
+            </div>
+            <!-- Botão de modo escuro -->
+            <!-- Corrigir a estrutura do header (linhas ~35-45) -->
+            <div class="flex items-center space-x-4">
+                <button id="dark-mode-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-300" title="Alternar modo escuro">
+                    <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full left-0 top-full">
+            <div class="nav-links">
+                <a href="index.html#desafio">O Desafio</a>
+                <a href="index.html#servicos">Nossos Serviços</a>
+                <a href="index.html#beneficios">Benefícios</a>
+                <a href="index.html#artigos">Artigos</a>
+                <a href="index.html#contato">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <article class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Como Dimensionar Corretamente sua Rede Wi-Fi</h1>
+                <p class="text-xl text-slate-600 mb-8">Um guia prático para garantir que sua conexão sem fio atenda às necessidades do seu escritório, evitando problemas de desempenho.</p>
+                <div class="flex items-center justify-center space-x-4 text-slate-500">
+                    <span> Publicado em 05 de Julho, 2025</span>
+                    <span> 10 min de leitura</span>
+                </div>
+            </div>
+
+            <div class="prose prose-lg max-w-none">
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+                    <p class="text-blue-800 font-medium">🎯 <strong>Objetivo:</strong> Ao final deste artigo, você saberá calcular exatamente quantos pontos de acesso precisa e onde posicioná-los para cobertura ideal.</p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">1. Análise de Necessidades e Usuários</h2>
+                <p class="text-slate-700 mb-6">Antes de escolher equipamentos, é fundamental entender quantos dispositivos estarão conectados simultaneamente e que tipo de atividades realizarão.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Cálculo de dispositivos:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>Por funcionário:</strong> 2-3 dispositivos (laptop, smartphone, tablet)</li>
+                        <li><strong>Equipamentos fixos:</strong> impressoras, câmeras, sistemas de segurança</li>
+                        <li><strong>Visitantes:</strong> considere 20-30% adicional para guests</li>
+                        <li><strong>Crescimento futuro:</strong> planeje para 50% mais dispositivos</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">2. Largura de Banda por Atividade</h2>
+                <p class="text-slate-700 mb-6">Diferentes atividades consomem diferentes quantidades de banda. Conhecer esses valores ajuda no dimensionamento correto.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Consumo típico por atividade:</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">Atividades Básicas:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+                                <li>Email: 1 Mbps</li>
+                                <li>Navegação web: 2-5 Mbps</li>
+                                <li>Documentos online: 3-5 Mbps</li>
+                                <li>Chat/mensagens: 1-2 Mbps</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">Atividades Intensivas:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+                                <li>Videoconferência HD: 5-10 Mbps</li>
+                                <li>Streaming de vídeo: 10-25 Mbps</li>
+                                <li>Upload de arquivos: 10-50 Mbps</li>
+                                <li>Backup em nuvem: 20-100 Mbps</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">3. Cobertura e Posicionamento</h2>
+                <p class="text-slate-700 mb-6">A localização dos pontos de acesso é crucial para garantir sinal forte em toda a área de trabalho.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Regras de posicionamento:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>Altura ideal:</strong> 2,5 a 3 metros do chão</li>
+                        <li><strong>Distância entre APs:</strong> 15-20 metros em escritórios</li>
+                        <li><strong>Evitar obstáculos:</strong> paredes de concreto, elevadores, cozinhas</li>
+                        <li><strong>Posição central:</strong> no meio das áreas de maior uso</li>
+                        <li><strong>Sobreposição:</strong> 15-20% de overlap entre sinais</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">4. Escolha do Padrão Wi-Fi</h2>
+                <p class="text-slate-700 mb-6">Diferentes padrões Wi-Fi oferecem velocidades e recursos distintos. Escolher o correto impacta diretamente na performance.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Comparação de padrões:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-slate-200">
+                                    <th class="text-left py-2 font-semibold">Padrão</th>
+                                    <th class="text-left py-2 font-semibold">Velocidade Máxima</th>
+                                    <th class="text-left py-2 font-semibold">Recomendação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-700">
+                                <tr class="border-b border-slate-100">
+                                    <td class="py-2">Wi-Fi 5 (802.11ac)</td>
+                                    <td class="py-2">1,3 Gbps</td>
+                                    <td class="py-2">Mínimo aceitável</td>
+                                </tr>
+                                <tr class="border-b border-slate-100">
+                                    <td class="py-2">Wi-Fi 6 (802.11ax)</td>
+                                    <td class="py-2">9,6 Gbps</td>
+                                    <td class="py-2">Recomendado</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">Wi-Fi 6E</td>
+                                    <td class="py-2">9,6 Gbps + 6GHz</td>
+                                    <td class="py-2">Futuro-proof</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">5. Segurança da Rede</h2>
+                <p class="text-slate-700 mb-6">Uma rede bem dimensionada deve ser também uma rede segura. Implemente estas práticas desde o início.</p>
+                
+                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Configurações de segurança:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>WPA3:</strong> Use sempre o protocolo mais recente</li>
+                        <li><strong>Redes separadas:</strong> Funcionários, visitantes e IoT</li>
+                        <li><strong>Senhas fortes:</strong> Mínimo 15 caracteres complexos</li>
+                        <li><strong>Firewall:</strong> Ative proteção contra intrusões</li>
+                        <li><strong>Monitoramento:</strong> Logs de acesso e atividade</li>
+                    </ul>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-12">
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-4">💡 Dica de Especialista</h3>
+                    <p class="text-yellow-700">Sempre teste a rede em horário de pico com todos os dispositivos conectados. O que funciona com 5 usuários pode falhar com 20.</p>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-8 mt-12 text-center">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">Precisa de um Projeto de Rede?</h3>
+                    <p class="text-green-700 mb-6">A NexoTech faz o dimensionamento completo, instalação e configuração da sua rede Wi-Fi.</p>
+                    <a href="index.html#contato" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 transition-colors duration-300">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 py-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 NexoTech Consultoria. Todos os direitos reservados.</p>
+            <p class="mt-2 text-sm">Transformando tecnologia em vantagem competitiva.</p>
+        </div>
+    </footer>
+</body>
+</html>
