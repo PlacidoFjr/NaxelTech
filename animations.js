@@ -71,16 +71,17 @@ function initSmoothScroll() {
 
 // Função principal de animações
 function initAnimations() {
-    // Logo animação
+    // Função para animar a logo
     function initLogoAnimation() {
         const logo = document.querySelector('.logo-animate');
+        
         if (logo) {
-            // Adiciona classe para iniciar animação quando a página carrega
+            // Animação de entrada
             setTimeout(() => {
                 logo.classList.add('animate-in');
             }, 500);
             
-            // Adiciona efeito de rotação 3D ao passar o mouse
+            // Efeitos de hover
             logo.addEventListener('mouseover', function() {
                 this.style.transform = 'perspective(500px) rotateY(15deg) translateY(-3px)';
                 this.style.textShadow = '0 0 15px rgba(59, 130, 246, 0.8)';
@@ -98,6 +99,14 @@ function initAnimations() {
     // IMPORTANTE: Chamar a função de animação da logo
     initLogoAnimation();
     
+    // CORRIGIDO: Inicializar fundo tecnológico
+    if (typeof initTechBackground === 'function') {
+        initTechBackground();
+        console.log('✅ Fundo tecnológico inicializado');
+    } else {
+        console.warn('⚠️ Função initTechBackground não encontrada');
+    }
+    
     // Animações de scroll
     const observerOptions = {
         threshold: 0.1,
@@ -107,7 +116,7 @@ function initAnimations() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible'); // Mudança aqui
+                entry.target.classList.add('is-visible');
             }
         });
     }, observerOptions);
@@ -116,8 +125,8 @@ function initAnimations() {
         observer.observe(el);
     });
     
-    // Funcionalidade do botão de toggle de animação
-    const animationToggle = document.getElementById('animation-toggle-btn');
+    // Controle do toggle de animação
+    const toggleBtn = document.getElementById('animation-toggle-btn');
     const techCanvas = document.getElementById('tech-canvas');
     let animationEnabled = localStorage.getItem('animationEnabled') !== 'false';
     
@@ -126,9 +135,9 @@ function initAnimations() {
         techCanvas.style.display = 'none';
     }
     
-    if (animationToggle) {
-        animationToggle.addEventListener('click', function() {
-            // Efeito de ripple
+    // Event listener para o toggle
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
             this.classList.add('clicked');
             setTimeout(() => this.classList.remove('clicked'), 600);
             
@@ -137,6 +146,12 @@ function initAnimations() {
             
             if (techCanvas) {
                 techCanvas.style.display = animationEnabled ? 'block' : 'none';
+                
+                if (animationEnabled && typeof initTechBackground === 'function') {
+                    initTechBackground();
+                } else if (!animationEnabled && techCanvas.stopAnimation) {
+                    techCanvas.stopAnimation();
+                }
             }
         });
     }

@@ -5,53 +5,51 @@ function updateMobileColors() {
         const label = document.getElementById('mobile-total-label');
         const value = document.getElementById('mobile-total-value');
         
-        if (label && value) {
-            if (isDark) {
-                label.style.color = '#ffffff !important';
-                value.style.color = '#ffffff !important';
-            } else {
-                label.style.color = '#374151 !important';
-                value.style.color = '#059669 !important';
-            }
+        // Verificação de segurança
+        if (!label || !value) {
+            console.warn('⚠️ Elementos mobile da calculadora não encontrados');
+            return;
+        }
+        
+        if (isDark) {
+            label.style.color = '#e2e8f0';
+            value.style.color = '#60a5fa';
+        } else {
+            label.style.color = '#475569';
+            value.style.color = '#2563eb';
         }
     }, 150);
 }
 
 // Função para inicializar calculadora mobile
+// Remover completamente a função updateMobileColors
+// Manter apenas as funções da calculadora
+
 function initMobileCalculator() {
-    if (window.innerWidth <= 768) {
-        console.log('📱 Inicializando calculadora mobile...');
-        
-        // Criar elementos mobile se não existirem
-        createMobileCalculatorElements();
-        
-        // Escutar mudanças nos inputs de forma mais eficiente
-        const form = document.getElementById('calculator-form');
-        if (form) {
-            // Remover listeners antigos
-            form.removeEventListener('change', updateMobileCalculatorDisplay);
-            form.removeEventListener('input', updateMobileCalculatorDisplay);
-            
-            // Adicionar listeners para TODOS os inputs (funcionários, atividade E serviços)
-            const allInputs = form.querySelectorAll('input[type="radio"], input[type="checkbox"]');
-            
-            allInputs.forEach(input => {
-                input.addEventListener('change', () => {
-                    console.log('📱 Input mobile alterado:', input.name, input.value);
-                    setTimeout(updateMobileCalculatorDisplay, 50);
-                });
-            });
-            
-            console.log('✅ Event listeners mobile adicionados:', allInputs.length, 'inputs');
-        }
+    // Verificar se já foi inicializada
+    if (document.querySelector('.mobile-investment-estimate')) {
+        return;
     }
+    
+    createMobileCalculatorElements();
+    
+    const form = document.getElementById('calculator-form');
+    if (!form) return;
+    
+    const allInputs = form.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+    
+    allInputs.forEach(function(input) {
+        input.addEventListener('change', function() {
+            updateMobileCalculatorDisplay();
+        });
+    });
+    
+    updateMobileCalculatorDisplay();
 }
 
-// Função para criar elementos da calculadora mobile
 function createMobileCalculatorElements() {
     const resultContainer = document.querySelector('.result-container');
-    if (!resultContainer) {
-        console.error('❌ Container de resultado não encontrado');
+    if (!resultContainer || document.querySelector('.mobile-investment-estimate')) {
         return;
     }
     
@@ -167,22 +165,17 @@ function updateMobileCalculatorDisplay() {
         // Atualizar total
         totalValue.textContent = `R$ ${Math.round(total).toLocaleString('pt-BR')}`;
         
-        // Aplicar cor correta baseada no modo escuro
-        const isDark = document.body.classList.contains('dark');
-        const totalLabel = document.getElementById('mobile-total-label');
-        const totalValueElement = document.getElementById('mobile-total-value');
-        
-        if (totalLabel) {
-            totalLabel.style.color = isDark ? '#ffffff' : '#374151';
-            totalLabel.style.fontWeight = '600';
+    
+        function updateCalculatorDisplay() {
+            if (totalLabel) {
+                totalLabel.style.color = '#374151';
+                totalValueElement.style.color = '#059669';
+                totalValueElement.style.fontSize = '1.25rem';
+                totalValueElement.style.fontWeight = 'bold';
+            }
+            
+            console.log('✅ Display mobile atualizado com total:', total);
         }
-        if (totalValueElement) {
-            totalValueElement.style.color = isDark ? '#ffffff' : '#059669';
-            totalValueElement.style.fontSize = '1.25rem';
-            totalValueElement.style.fontWeight = 'bold';
-        }
-        
-        console.log('✅ Display mobile atualizado com total:', total);
         
     } else {
         // Esconder o container de resultado
@@ -242,3 +235,5 @@ window.addEventListener('resize', () => {
         initMobileCalculator();
     }
 });
+
+// Remover funções duplicadas que já existem em script.js

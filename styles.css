@@ -1,58 +1,94 @@
+/* Footer configurações básicas */
+footer {
+    background-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+
+/* Fallback para quando as fontes carregam */
 body {
+    visibility: visible;
+    opacity: 1;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden; /* Prevent horizontal scroll during animations */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
 }
 .chart-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
+    width: 100% !important;
+    max-width: 800px;
+    height: 400px !important;
     margin: 0 auto;
-    min-height: 250px; /* Altura mínima */
-    max-height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    /* Otimização para alta resolução */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
-@media (min-width: 768px) {
-    .chart-container {
-        min-height: 280px;
-        max-height: 380px;
-        max-width: 550px;
-    }
-}
-
-/* Desktop - manter proporção da imagem */
-@media (min-width: 1024px) {
-    .chart-container {
-        max-width: 600px;
-        min-height: 300px;
-        max-height: 400px;
-    }
-}
-
-@media (min-width: 1440px) {
-    .chart-container {
-        max-width: 600px; /* Não crescer mais */
-        min-height: 300px;
-        max-height: 400px;
-    }
-}
-
-@media (min-width: 1920px) {
-    .chart-container {
-        max-width: 600px; /* Manter compacto */
-        min-height: 300px;
-        max-height: 400px;
-    }
-}
-
-/* Canvas específico */
 #challenges-chart {
     width: 100% !important;
     height: 100% !important;
-    min-height: inherit;
-    max-height: inherit;
+    display: block !important;
+    /* Renderização otimizada para alta resolução */
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    /* Aceleração de hardware */
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Mobile otimizado */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 320px !important;
+        padding: 15px;
+        margin: 10px auto;
+        max-width: calc(100vw - 20px);
+    }
+    
+    #challenges-chart {
+        /* Força renderização nítida no mobile */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 480px) {
+    .chart-container {
+        height: 280px !important;
+        padding: 10px;
+        margin: 5px auto;
+    }
+}
+
+/* Telas de alta resolução (Retina, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2), 
+       (min-device-pixel-ratio: 2), 
+       (min-resolution: 192dpi), 
+       (min-resolution: 2dppx) {
+    #challenges-chart {
+        image-rendering: auto;
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
+
+/* Telas de altíssima resolução */
+@media (-webkit-min-device-pixel-ratio: 3), 
+       (min-device-pixel-ratio: 3), 
+       (min-resolution: 288dpi), 
+       (min-resolution: 3dppx) {
+    #challenges-chart {
+        image-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
 }
 
 /* Seção centralizada */
@@ -86,18 +122,21 @@ body {
     text-align: center !important;
 }
 .contact-button {
-    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+    /* animation: pulse 2s infinite; <- COMENTAR ESTA LINHA */
 }
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-    70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
 }
+
 
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* animation: fadeIn 0.5s ease forwards; <- COMENTAR ESTA LINHA */
 }
 .animate-on-scroll.is-visible {
     opacity: 1;
@@ -134,7 +173,10 @@ body {
 }
 
 .fade-in {
-    animation: fadeIn 0.5s ease forwards;
+    /* animation: fadeIn 0.5s ease forwards; <- COMENTAR ESTA LINHA */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 
@@ -278,6 +320,9 @@ body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Correções para elementos que estavam sumindo */
@@ -721,8 +766,9 @@ footer,
 /* Radio e Checkbox Groups */
 .radio-group, .checkbox-group {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    max-width: 600px;
 }
 
 @media (max-width: 768px) {
@@ -735,17 +781,30 @@ footer,
 .radio-option, .checkbox-option {
     position: relative;
     display: flex;
-    align-items: center;
-    padding: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
     border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    border: 2px solid #e2e8f0;
     cursor: pointer;
     transition: all 0.3s ease;
+    background: white;
+    min-height: 80px;
 }
 
 .radio-option:hover, .checkbox-option:hover {
     border-color: #3b82f6;
     background-color: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom + .option-content {
+    color: #1e40af;
+}
+
+.radio-option input[type="radio"]:checked {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
 }
 
 .radio-option input[type="radio"],
@@ -800,10 +859,12 @@ footer,
 
 .option-content {
     flex: 1;
+    margin-left: 0.5rem;
 }
 
 .option-content strong {
     display: block;
+    font-size: 1rem;
     font-weight: 600;
     color: #1e293b;
     margin-bottom: 0.25rem;
@@ -811,8 +872,9 @@ footer,
 
 .option-content small {
     display: block;
-    color: #64748b;
     font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 400;
 }
 
 .price {
@@ -1275,35 +1337,7 @@ image.png.dark .result-total {
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(168, 85, 247, 0.15));
 }
 
-/* Animação de pulso para indicar interatividade */
-@keyframes pulse-ring {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
-}
-
-.floating-btn::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px solid rgba(59, 130, 246, 0.4);
-    border-radius: 50%;
-    opacity: 0;
-    animation: pulse-ring 2s infinite;
-}
-
-.floating-btn:hover::after {
-    animation-play-state: paused;
-    opacity: 0;
-}
+/* Animações problemáticas removidas para melhor performance */
 
 /* Animação de entrada suave */
 @keyframes fadeInUp {
@@ -1376,4 +1410,350 @@ image.png.dark .result-total {
 
 .dark .total-disclaimer {
     color: #fbbf24;
+}
+
+/* Otimizar elementos animados */
+.logo-animate,
+#dark-mode-toggle,
+.floating-btn {
+    will-change: transform, box-shadow;
+}
+
+/* Remover will-change quando não estiver animando */
+.logo-animate:not(:hover),
+#dark-mode-toggle:not(:hover),
+.floating-btn:not(:hover) {
+    will-change: auto;
+}
+
+/* Animação de gradiente para o fundo */
+@keyframes gradient-x {
+    0%, 100% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-gradient-x {
+    animation: gradient-x 15s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* Garantir que o footer seja sempre visível */
+footer {
+    position: relative !important;
+    z-index: 10 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    clear: both !important;
+    margin-top: 4rem !important;
+    overflow: hidden;
+}
+/* FORÇAR EXIBIÇÃO COMPLETA DO RODAPÉ NO DESKTOP */
+@media screen and (min-width: 769px) {
+    /* Garantir que o footer seja visível */
+    footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Forçar exibição do grid com 4 colunas */
+    footer .grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 2rem !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Forçar exibição de todos os elementos flex */
+    footer .flex {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Forçar exibição de todas as divs internas */
+    footer > div > div,
+    footer div {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Ocultar o conteúdo simplificado do mobile */
+    footer::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Garantir que as 4 colunas sejam visíveis */
+    footer .grid > div {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Títulos das colunas */
+    footer h3 {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Listas e links */
+    footer ul,
+    footer li,
+    footer a,
+    footer p,
+    footer span {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    footer li {
+        display: list-item !important;
+    }
+}
+
+/* Efeito hover para cards de certificação */
+footer .group:hover {
+    transform: translateY(-2px);
+}
+
+/* Animação suave para links */
+footer a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efeito de brilho nos ícones sociais */
+footer .group:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+footer .group:hover::before {
+    left: 100%;
+}
+
+main {
+    flex: 1;
+}
+
+/* Forçar o footer a aparecer em mobile */
+@media (max-width: 768px) {
+    footer {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin-top: 2rem !important;
+    }
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+    footer .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    footer .flex.flex-col.sm\:flex-row {
+        flex-direction: column;
+    }
+    
+    footer .grid.grid-cols-2.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    footer .grid.grid-cols-2.md\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Correção para footer aparecer no mobile */
+html, body {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    position: relative !important;
+    z-index: 999;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Específico para mobile */
+@media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    footer {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin-top: 2rem !important;
+        padding: 2rem 1rem !important;
+    }
+    
+    /* Remover qualquer altura fixa que possa estar cortando */
+    .container, main, section {
+        height: auto !important;
+        max-height: none !important;
+    }
+}
+
+/* CORREÇÃO PARA ELIMINAR PARTE BRANCA E BARRAS DE ROLAGEM DUPLAS */
+@media screen and (min-width: 769px) {
+    /* Corrigir configurações globais */
+    html, body {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow-x: hidden !important;
+        overflow-y: scroll !important; /* Forçar apenas uma barra de rolagem */
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Garantir que containers ocupem toda a largura */
+    .container, .mx-auto {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+    
+    /* Remover espaços em branco laterais */
+    main {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    /* Garantir que o footer seja totalmente visível */
+    footer {
+        position: relative !important;
+        bottom: auto !important;
+        width: 100% !important;
+        z-index: 999 !important;
+        margin-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        overflow: visible !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Forçar exibição completa do conteúdo do footer */
+    footer * {
+        overflow: visible !important;
+        max-height: none !important;
+    }
+    
+    /* Eliminar scrollbars duplas */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    /* Reduzir padding do footer nos artigos */
+    footer.bg-slate-800 {
+        padding-top: 1.5rem !important; /* py-6 em vez de py-8 */
+        padding-bottom: 1.5rem !important;
+        margin-top: 2rem !important; /* mt-8 em vez de mt-16 */
+    }
+    
+    /* Texto menor no desktop */
+    footer.bg-slate-800 p {
+        font-size: 0.875rem !important; /* text-sm */
+        margin-bottom: 0.25rem !important;
+    }
+    
+    /* Slogan ainda menor */
+    footer.bg-slate-800 p.mt-2 {
+        font-size: 0.75rem !important; /* text-xs */
+        opacity: 0.8;
+    }
+}
+
+/* Footer ainda mais compacto em telas grandes */
+@media screen and (min-width: 1024px) {
+    footer.bg-slate-800 {
+        padding-top: 1rem !important; /* py-4 */
+        padding-bottom: 1rem !important;
+    }
+}
+
+/* Rodapé mais compacto para artigos */
+.article-footer {
+    padding: 1rem 0 !important;
+    margin-top: 1.5rem !important;
+}
+
+@media (min-width: 768px) {
+    .article-footer {
+        padding: 1.25rem 0 !important;
+        margin-top: 2rem !important;
+    }
+}
+
+/* Reduzir espaçamento interno do texto do rodapé */
+.article-footer p {
+    margin-bottom: 0.25rem !important;
+    font-size: 0.875rem !important;
+}
+
+.article-footer p:last-child {
+    margin-bottom: 0 !important;
+    font-size: 0.75rem !important;
 }

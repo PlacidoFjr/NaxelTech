@@ -10,6 +10,8 @@
 body {
     line-height: 1.7;
     font-size: 16px;
+    background-color: #ffffff;
+    color: #1f2937;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -21,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 2.5rem;
     color: var(--productivity-primary);
+    text-align: left !important;
 }
 
 h2 {
@@ -38,6 +41,7 @@ p {
     margin-bottom: 1.5rem;
     color: #374151;
     font-size: 1.1rem;
+    text-align: left !important;
 }
 
 /* Cards e containers melhorados */
@@ -49,6 +53,21 @@ p {
     margin-bottom: 2rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
+
+/* Remover centralização do cabeçalho do artigo */
+.text-center {
+    text-align: left !important;
+}
+
+.justify-center {
+    justify-content: flex-start !important;
+}
+
+.items-center {
+    align-items: flex-start !important;
+}
+
+/* REMOVER TODAS as regras .dark - apenas tema claro */
 
 /* Bordas coloridas laterais */
 .border-l-4.border-blue-500 {
@@ -115,181 +134,36 @@ p {
     border-color: var(--productivity-primary);
 }
 
-/* Modo escuro otimizado para produtividade */
-.dark body {
-    background-color: #0f0f23;
-    color: #e2e8f0;
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .bg-white {
+        padding: 1.5rem;
+    }
+
+    /* Navbar mobile fixa */
+    /* Adicionar estilos mobile */
+    @media (max-width: 768px) {
+        body {
+            padding-top: 85px !important;
+        }
+        
+        header {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    }
 }
 
-.dark h1, .dark h2, .dark h3, .dark h4 {
-    color: #c4b5fd;
-}
-
-.dark p {
-    color: #cbd5e1;
-}
-
-.dark header {
-    background-color: rgba(30, 27, 75, 0.95);
-    backdrop-filter: blur(12px);
-}
-
-.dark header a,
-.dark header .text-slate-700,
-.dark header .text-slate-600 {
-    color: #cbd5e1 !important;
-}
-
-.dark .text-slate-900,
-.dark .text-slate-800 {
-    color: #f1f5f9 !important;
-}
-
-.dark .text-slate-700,
-.dark .text-slate-600 {
-    color: #cbd5e1 !important;
-}
-
-.dark .text-slate-500 {
-    color: #94a3b8 !important;
-}
-
-/* Cards no modo escuro */
-.dark .bg-white {
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%) !important;
-    border: 2px solid #4338ca !important;
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15) !important;
-}
-
-.dark .border-slate-200,
-.dark .border-slate-100 {
-    border-color: #4338ca !important;
-}
-
-/* Bordas coloridas no modo escuro */
-.dark .border-l-4.border-blue-500 {
-    border-left-color: #60a5fa !important;
-    background: linear-gradient(90deg, rgba(96, 165, 250, 0.15) 0%, transparent 100%) !important;
-}
-
-.dark .border-l-4.border-green-500 {
-    border-left-color: #34d399 !important;
-    background: linear-gradient(90deg, rgba(52, 211, 153, 0.15) 0%, transparent 100%) !important;
-}
-
-.dark .border-l-4.border-purple-500 {
-    border-left-color: #a78bfa !important;
-    background: linear-gradient(90deg, rgba(167, 139, 250, 0.15) 0%, transparent 100%) !important;
-}
-
-/* Tags coloridas no modo escuro */
-.dark .bg-green-100 {
-    background: linear-gradient(135deg, rgba(52, 211, 153, 0.2) 0%, rgba(52, 211, 153, 0.1) 100%) !important;
-    color: #86efac !important;
-    border-color: #34d399 !important;
-}
-
-.dark .text-green-800 {
-    color: #86efac !important;
-}
-
-.dark .bg-blue-100 {
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%) !important;
-    color: #93c5fd !important;
-    border-color: #60a5fa !important;
-}
-
-.dark .text-blue-800 {
-    color: #93c5fd !important;
-}
-
-.dark .bg-purple-100 {
-    background: linear-gradient(135deg, rgba(167, 139, 250, 0.2) 0%, rgba(167, 139, 250, 0.1) 100%) !important;
-    color: #c4b5fd !important;
-    border-color: #a78bfa !important;
-}
-
-.dark .text-purple-800 {
-    color: #c4b5fd !important;
-}
-
-/* Grid de soluções no modo escuro */
-.dark .grid.md\:grid-cols-3 > div {
-    background: linear-gradient(135deg, #1e1b4b 0%, #2d2a5f 100%) !important;
-    border: 2px solid #4338ca !important;
-    color: #e2e8f0;
-}
-
-.dark .grid.md\:grid-cols-3 > div:hover {
-    background: linear-gradient(135deg, #312e81 0%, #4338ca 100%) !important;
-    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.25) !important;
-    border-color: #a78bfa !important;
-}
-
-/* Box de resultado no modo escuro */
-.dark .bg-blue-50 {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%) !important;
-    border: 2px solid rgba(139, 92, 246, 0.4) !important;
-}
-
-.dark .bg-blue-50 .text-blue-800 {
-    color: #c4b5fd !important;
-}
-
-.dark .bg-blue-50 p {
-    color: #cbd5e1 !important;
-}
-
-/* Listas no modo escuro */
-.dark ul li {
-    color: #cbd5e1;
-}
-
-.dark ul li strong {
-    color: #f1f5f9;
-}
-
-/* Automação tags no modo escuro */
-.dark .space-y-4 .bg-blue-100 {
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.25) 0%, rgba(96, 165, 250, 0.15) 100%) !important;
-    color: #93c5fd !important;
-    border: 1px solid #60a5fa;
-}
-
-.dark footer {
-    background-color: #0f0f23;
-    color: #94a3b8;
-}
-
-/* Box laranja no modo escuro */
-.dark .bg-orange-50 {
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.08) 100%) !important;
-    border: 2px solid rgba(249, 115, 22, 0.4) !important;
-}
-
-.dark .text-orange-800,
-.dark .text-orange-700 {
-    color: #fdba74 !important;
-}
-
-/* Box verde no modo escuro */
-.dark .bg-green-50 {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%) !important;
-    border: 2px solid rgba(34, 197, 94, 0.4) !important;
-}
-
-.dark .text-green-800,
-.dark .text-green-700 {
-    color: #86efac !important;
-}
-
-.dark .bg-green-600 {
-    background-color: #16a34a !important;
-}
-
-.dark .bg-green-600:hover {
-    background-color: #15803d !important;
-}
 
 /* Responsividade melhorada */
 @media (max-width: 768px) {

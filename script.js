@@ -22,21 +22,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // 5. Gráfico
     initChart();
     
-    // 6. Formulário de contato
+    // 6. Efeito de scroll do header
+    initHeaderScrollEffect();
+    
+    // 7. Inicializar calculadora mobile se necessário
+    if (window.innerWidth <= 768) {
+        initMobileCalculator();
+    }
+    
+    // 8. Formulário de contato
     initContactForm();
     
-    // 7. Efeito de scroll do header
-    initHeaderScrollEffect();
+    // 9. Newsletter
+    initNewsletter();
     
     console.log('✅ Todas as funcionalidades inicializadas!');
 });
 
 // Função para menu mobile
-// Função para menu mobile
 function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const desktopMenu = document.querySelector('.hidden.md\\:flex'); // Links desktop
+    const desktopMenu = document.querySelector('.hidden.md\\:flex');
     const navLinks = document.querySelectorAll('.nav-links a, .hidden.md\\:flex a');
     
     console.log('🔧 Inicializando menu mobile...');
@@ -44,54 +51,58 @@ function initMobileMenu() {
     console.log('Menu mobile encontrado:', !!mobileMenu);
     console.log('Menu desktop encontrado:', !!desktopMenu);
     
-    if (mobileMenuButton) {
-        // Forçar visibilidade do menu desktop em telas pequenas como fallback
-        mobileMenuButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            console.log('🔧 Botão mobile clicado');
-            
-            // Se o menu mobile existe, usar ele
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-                this.classList.toggle('active');
-            } 
-            // Senão, mostrar/esconder o menu desktop
-            else if (desktopMenu) {
-                if (desktopMenu.style.display === 'none' || !desktopMenu.style.display) {
-                    desktopMenu.style.display = 'flex';
-                    desktopMenu.style.flexDirection = 'column';
-                    desktopMenu.style.position = 'absolute';
-                    desktopMenu.style.top = '100%';
-                    desktopMenu.style.left = '0';
-                    desktopMenu.style.right = '0';
-                    desktopMenu.style.background = 'rgba(30, 41, 59, 0.98)';
-                    desktopMenu.style.padding = '1rem';
-                    desktopMenu.style.zIndex = '9999';
-                } else {
-                    desktopMenu.style.display = 'none';
-                }
-                this.classList.toggle('active');
-            }
-        });
-        
-        // Fechar menu ao clicar fora
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuButton.contains(e.target) && 
-                !mobileMenu?.contains(e.target) && 
-                !desktopMenu?.contains(e.target)) {
-                
-                if (mobileMenu) {
-                    mobileMenu.classList.add('hidden');
-                }
-                if (desktopMenu) {
-                    desktopMenu.style.display = '';
-                }
-                mobileMenuButton.classList.remove('active');
-            }
-        });
+    // Verificação de segurança
+    if (!mobileMenuButton) {
+        console.warn('⚠️ Botão do menu mobile não encontrado');
+        return;
     }
+    
+    // Forçar visibilidade do menu desktop em telas pequenas como fallback
+    mobileMenuButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('🔧 Botão mobile clicado');
+        
+        // Se o menu mobile existe, usar ele
+        if (mobileMenu) {
+            mobileMenu.classList.toggle('hidden');
+            this.classList.toggle('active');
+        } 
+        // Senão, mostrar/esconder o menu desktop
+        else if (desktopMenu) {
+            if (desktopMenu.style.display === 'none' || !desktopMenu.style.display) {
+                desktopMenu.style.display = 'flex';
+                desktopMenu.style.flexDirection = 'column';
+                desktopMenu.style.position = 'absolute';
+                desktopMenu.style.top = '100%';
+                desktopMenu.style.left = '0';
+                desktopMenu.style.right = '0';
+                desktopMenu.style.background = 'rgba(30, 41, 59, 0.98)';
+                desktopMenu.style.padding = '1rem';
+                desktopMenu.style.zIndex = '9999';
+            } else {
+                desktopMenu.style.display = 'none';
+            }
+            this.classList.toggle('active');
+        }
+    });
+    
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (!mobileMenuButton.contains(e.target) && 
+            !mobileMenu?.contains(e.target) && 
+            !desktopMenu?.contains(e.target)) {
+            
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+            if (desktopMenu) {
+                desktopMenu.style.display = '';
+            }
+            mobileMenuButton.classList.remove('active');
+        }
+    });
     
     // Fechar menu ao clicar em links
     navLinks.forEach(link => {
@@ -361,10 +372,7 @@ function initCalculator() {
         });
     });
     
-    // Inicializar versão mobile se necessário
-    if (window.innerWidth <= 768) {
-        initMobileCalculator();
-    }
+
     
     // Inicializar display
     try {
@@ -441,7 +449,7 @@ function updateResultDisplay() {
     }
     
     if (calculatorData.services.length === 0) {
-        breakdown.innerHTML = '<div class="text-center py-8"><p class="text-slate-600 dark:text-slate-300">Selecione as opções acima para ver a estimativa</p></div>';
+        breakdown.innerHTML = '<div class="text-center py-8"><p class="text-slate-600">Selecione as opções acima para ver a estimativa</p></div>';
         const totalValue = total.querySelector('.total-value');
         if (totalValue) totalValue.textContent = 'R$ 0';
         return;
@@ -454,15 +462,15 @@ function updateResultDisplay() {
         const priceFormatted = `R$ ${service.adjustedPrice.toLocaleString('pt-BR', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
         
         html += `
-            <div class="group flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 rounded-xl border border-blue-100 dark:border-slate-600 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+            <div class="group flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
                         ${index + 1}
                     </div>
-                    <span class="font-medium text-slate-700 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">${service.label}</span>
+                    <span class="font-medium text-slate-700 group-hover:text-blue-700 transition-colors">${service.label}</span>
                 </div>
                 <div class="text-right">
-                    <span class="font-bold text-lg text-blue-600 dark:text-blue-400">${priceFormatted}</span>
+                    <span class="font-bold text-lg text-blue-600">${priceFormatted}</span>
                 </div>
             </div>
         `;
@@ -607,22 +615,51 @@ function initChart() {
     // Verificar se Chart.js está carregado
     if (typeof Chart === 'undefined') {
         console.log('⚠️ Chart.js não está carregado');
-        setTimeout(initChart, 100); // Tentar novamente
+        setTimeout(initChart, 100);
         return;
     }
 
-    // Destruir gráfico existente se houver
-    if (window.challengesChart && typeof window.challengesChart.destroy === 'function') {
-        window.challengesChart.destroy();
+    // Destruir gráfico existente
+    if (window.challengesChart) {
+        try {
+            window.challengesChart.destroy();
+        } catch (error) {
+            console.warn('⚠️ Erro ao destruir gráfico:', error);
+        }
         window.challengesChart = null;
     }
 
+    // SOLUÇÃO ROBUSTA PARA ALTA RESOLUÇÃO
+    const container = ctx.parentElement;
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    
+    // Obter dimensões reais do container
+    const containerRect = container.getBoundingClientRect();
+    const displayWidth = containerRect.width - 40; // Subtrair padding
+    const displayHeight = containerRect.height - 40;
+    
+    // Configurar canvas para alta resolução
+    ctx.width = displayWidth * devicePixelRatio;
+    ctx.height = displayHeight * devicePixelRatio;
+    
+    // Definir tamanho CSS (visual)
+    ctx.style.width = displayWidth + 'px';
+    ctx.style.height = displayHeight + 'px';
+    
+    // Escalar contexto para alta resolução
+    const context = ctx.getContext('2d');
+    context.scale(devicePixelRatio, devicePixelRatio);
+    
+    // Forçar re-renderização
+    ctx.style.imageRendering = 'auto';
+    ctx.style.imageRendering = '-webkit-optimize-contrast';
+
     const chartData = {
         labels: [
-            'Escolha de equipamentos inadequados',
-            'Infraestrutura de rede insuficiente', 
-            'Falta de segurança de dados',
-            'Ausência de backups',
+            'Equipamentos inadequados',
+            'Infraestrutura insuficiente', 
+            'Segurança de dados',
+            'Backups ausentes',
             'Configurações ineficientes'
         ],
         datasets: [{
@@ -642,59 +679,36 @@ function initChart() {
                 'rgba(99, 102, 241, 1)',
                 'rgba(99, 102, 241, 1)'
             ],
-            borderWidth: 2
+            borderWidth: 2,
+            borderRadius: 6,
+            barThickness: window.innerWidth <= 768 ? 18 : 25
         }]
     };
 
-    // Verificar se está no modo escuro
-    const isDarkMode = document.body.classList.contains('dark');
-    
-    // Definir a cor do texto com base no modo
-    const textColor = isDarkMode ? '#FFFFFF' : '#1f2937';
-    
-    // Detectar tamanho da tela de forma mais robusta
-    const containerWidth = ctx.parentElement.offsetWidth;
-    const isMobile = window.innerWidth <= 768 || containerWidth < 500;
+    // Detectar dispositivo com mais precisão
+    const isMobile = window.innerWidth <= 768;
     const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
-    const isDesktop = window.innerWidth > 1024;
-
-    // Configurações específicas por dispositivo
-    let fontSize, barThickness, padding;
-    
-    if (isMobile) {
-        fontSize = { tick: 10, label: 9 };
-        barThickness = 25;
-        padding = 5;
-    } else if (isTablet) {
-        fontSize = { tick: 11, label: 10 };
-        barThickness = 20;
-        padding = 8;
-    } else { // Desktop
-        fontSize = { tick: 10, label: 9 }; // Fonte menor no desktop
-        barThickness = 18; // Barras mais finas
-        padding = 10;
-    }
+    const isSmallMobile = window.innerWidth <= 480;
 
     const config = {
         type: 'bar',
         data: chartData,
         options: {
-            responsive: true,
-            maintainAspectRatio: true, // Mudança importante
-            aspectRatio: isMobile ? 1.2 : 1.8, // Proporção fixa
+            responsive: false, // IMPORTANTE: Desabilitar responsividade automática
+            maintainAspectRatio: false,
+            devicePixelRatio: devicePixelRatio,
             indexAxis: 'y',
+            animation: false, // Desabilitar todas as animações
+            hover: {
+                animationDuration: 0
+            },
+            responsiveAnimationDuration: 0,
             layout: {
                 padding: {
-                    left: padding + 10,
-                    right: padding,
-                    top: padding,
-                    bottom: padding
-                }
-            },
-            elements: {
-                bar: {
-                    borderRadius: isDesktop ? 3 : 4, // Bordas menores no desktop
-                    barThickness: barThickness
+                    left: isMobile ? 8 : 15,
+                    right: isMobile ? 15 : 25,
+                    top: 15,
+                    bottom: 15
                 }
             },
             plugins: {
@@ -703,6 +717,22 @@ function initChart() {
                 },
                 legend: {
                     display: false
+                },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: 'rgba(99, 102, 241, 1)',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    titleFont: {
+                        size: Math.round((isMobile ? 12 : 14) * devicePixelRatio) / devicePixelRatio,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: Math.round((isMobile ? 11 : 13) * devicePixelRatio) / devicePixelRatio
+                    }
                 }
             },
             scales: {
@@ -713,34 +743,47 @@ function initChart() {
                         callback: function(value) {
                             return value + '%';
                         },
-                        color: textColor,
+                        color: '#374151',
                         font: {
-                            size: fontSize.tick
-                        }
+                            size: Math.round((isSmallMobile ? 10 : (isMobile ? 11 : 13)) * devicePixelRatio) / devicePixelRatio,
+                            weight: '600',
+                            family: 'system-ui, -apple-system, sans-serif'
+                        },
+                        stepSize: 25,
+                        maxTicksLimit: 5
                     },
                     grid: {
-                        color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(148, 163, 184, 0.3)'
+                        color: 'rgba(156, 163, 175, 0.3)',
+                        lineWidth: 1
+                    },
+                    border: {
+                        display: false
                     }
                 },
                 y: {
                     ticks: {
-                        color: textColor,
+                        color: '#374151',
                         font: {
-                            size: fontSize.label
+                            size: Math.round((isSmallMobile ? 9 : (isMobile ? 10 : 12)) * devicePixelRatio) / devicePixelRatio,
+                            weight: '600',
+                            family: 'system-ui, -apple-system, sans-serif'
                         },
                         maxRotation: 0,
+                        padding: isMobile ? 6 : 10,
                         callback: function(value, index) {
                             const label = this.getLabelForValue(value);
-                            // Truncar texto baseado no dispositivo
-                            if (isMobile && label.length > 25) {
-                                return label.substring(0, 22) + '...';
-                            } else if (isDesktop && label.length > 30) {
-                                return label.substring(0, 27) + '...';
+                            if (isSmallMobile && label.length > 16) {
+                                return label.substring(0, 13) + '...';
+                            } else if (isMobile && label.length > 20) {
+                                return label.substring(0, 17) + '...';
                             }
                             return label;
                         }
                     },
                     grid: {
+                        display: false
+                    },
+                    border: {
                         display: false
                     }
                 }
@@ -766,7 +809,7 @@ function initChart() {
 
     try {
         window.challengesChart = new Chart(ctx, config);
-        console.log('📊 Gráfico inicializado');
+        console.log('📊 Gráfico alta resolução criado com sucesso');
     } catch (error) {
         console.error('❌ Erro ao criar gráfico:', error);
     }
@@ -856,10 +899,7 @@ function createMobileCalculatorElements() {
     resultContainer.appendChild(resultDisplay);
     resultContainer.appendChild(buttonsContainer);
     
-    // Chamar updateMobileColors após adicionar os elementos ao DOM
-    setTimeout(() => {
-        updateMobileColors();
-    }, 100);
+
     
     console.log('✅ Elementos mobile da calculadora criados');
 }
@@ -923,17 +963,16 @@ function updateMobileCalculatorDisplay() {
         // Atualizar total
         totalValue.textContent = `R$ ${Math.round(total).toLocaleString('pt-BR')}`;
         
-        // Aplicar cor correta baseada no modo escuro
-        const isDark = document.body.classList.contains('dark');
+        // Aplicar cores para modo claro
         const totalLabel = document.getElementById('mobile-total-label');
         const totalValueElement = document.getElementById('mobile-total-value');
         
         if (totalLabel) {
-            totalLabel.style.color = isDark ? '#ffffff' : '#374151';
+            totalLabel.style.color = '#374151';
             totalLabel.style.fontWeight = '600';
         }
         if (totalValueElement) {
-            totalValueElement.style.color = isDark ? '#ffffff' : '#059669';
+            totalValueElement.style.color = '#059669';
             totalValueElement.style.fontSize = '1.25rem';
             totalValueElement.style.fontWeight = 'bold';
         }
@@ -953,8 +992,6 @@ function updateMobileCalculatorDisplay() {
     }
 }
 
-// Adicionar ao init principal
-
 // Escutar redimensionamento da janela
 window.addEventListener('resize', () => {
     if (window.innerWidth <= 768) {
@@ -962,28 +999,217 @@ window.addEventListener('resize', () => {
     }
 });
 
+// Inicializar EmailJS
+(function() {
+    emailjs.init("6h4mCYqh1EBWvSnbZ"); // Public Key do EmailJS
+})();
 
-
-
-// Adicionar após criar os elementos:
-function updateMobileColors() {
-    const isDark = document.body.classList.contains('dark');
-    const label = document.getElementById('mobile-total-label');
-    const value = document.getElementById('mobile-total-value');
+// Função para processar o formulário de contato
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
     
-    if (label && value) {
-        if (isDark) {
-            label.style.color = '#ffffff';
-            value.style.color = '#ffffff';
-        } else {
-            label.style.color = '#374151';
-            value.style.color = '#059669';
-        }
+    if (!contactForm) {
+        console.warn('⚠️ Formulário de contato não encontrado');
+        return;
     }
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        // Mostrar loading
+        submitButton.textContent = 'Enviando...';
+        submitButton.disabled = true;
+        submitButton.style.opacity = '0.7';
+        
+        // Coletar dados do formulário
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            message: document.getElementById('message').value,
+            to_name: 'NexoTech'
+        };
+        
+        // Enviar via EmailJS
+        emailjs.send('service_x4iycxb', 'template_2b12mkm', templateParams)
+            .then(function(response) {
+                console.log('✅ Email enviado com sucesso!', response);
+                
+                // Mostrar mensagem de sucesso
+                showNotification('✅ Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+                
+                // Limpar formulário
+                contactForm.reset();
+                
+            }, function(error) {
+                console.error('❌ Erro ao enviar email:', error);
+                showNotification('❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.', 'error');
+            })
+            .finally(function() {
+                // Restaurar botão
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                submitButton.style.opacity = '1';
+            });
+    });
 }
 
-// Chamar a função após criar os elementos
-// updateMobileColors(); // Removido para evitar chamada desnecessária
+// Função para mostrar notificações
+function showNotification(message, type) {
+    // Remover notificação existente se houver
+    const existingNotification = document.querySelector('.notification-toast');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.className = `notification-toast fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 max-w-sm ${
+        type === 'success' 
+            ? 'bg-green-500 text-white border-l-4 border-green-700' 
+            : 'bg-red-500 text-white border-l-4 border-red-700'
+    }`;
+    
+    notification.innerHTML = `
+        <div class="flex items-center">
+            <span class="mr-2 text-lg">${type === 'success' ? '✅' : '❌'}</span>
+            <span class="flex-1 text-sm">${message}</span>
+            <button onclick="this.parentElement.parentElement.remove()" class="ml-3 text-white hover:text-gray-200 text-lg font-bold">
+                ×
+            </button>
+        </div>
+    `;
+    
+    // Iniciar fora da tela
+    notification.style.transform = 'translateX(100%)';
+    document.body.appendChild(notification);
+    
+    // Animação de entrada
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remover após 5 segundos
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }
+    }, 5000);
+}
+
+// Função para inicializar newsletter
+function initNewsletter() {
+    const newsletterForm = document.querySelector('.border-t.border-slate-700\/50 .flex.flex-col.sm\\:flex-row.gap-3');
+    const emailInput = newsletterForm?.querySelector('input[type="email"]');
+    const subscribeButton = newsletterForm?.querySelector('button');
+    
+    if (!newsletterForm || !emailInput || !subscribeButton) {
+        console.warn('⚠️ Elementos da newsletter não encontrados');
+        return;
+    }
+    
+    // Adicionar event listener ao botão
+    subscribeButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        handleNewsletterSubscription();
+    });
+    
+    // Adicionar event listener para Enter no campo de email
+    emailInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleNewsletterSubscription();
+        }
+    });
+    
+    console.log('✅ Newsletter inicializada');
+}
+
+// Função para processar a inscrição na newsletter
+function handleNewsletterSubscription() {
+    const emailInput = document.querySelector('.border-t.border-slate-700\/50 input[type="email"]');
+    const subscribeButton = document.querySelector('.border-t.border-slate-700\/50 button');
+    
+    if (!emailInput || !subscribeButton) {
+        console.error('❌ Elementos da newsletter não encontrados');
+        return;
+    }
+    
+    const email = emailInput.value.trim();
+    
+    // Validação básica de email
+    if (!email) {
+        showNotification('❌ Por favor, insira seu email.', 'error');
+        emailInput.focus();
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        showNotification('❌ Por favor, insira um email válido.', 'error');
+        emailInput.focus();
+        return;
+    }
+    
+    // Mostrar loading
+    const originalText = subscribeButton.innerHTML;
+    subscribeButton.innerHTML = `
+        <span class="flex items-center justify-center">
+            <svg class="animate-spin w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Inscrevendo...
+        </span>
+    `;
+    subscribeButton.disabled = true;
+    subscribeButton.style.opacity = '0.7';
+    
+    // Preparar dados para EmailJS
+    const templateParams = {
+        subscriber_email: email,
+        subscriber_name: email.split('@')[0], // Usar parte antes do @ como nome
+        to_name: 'NexoTech',
+        subscription_date: new Date().toLocaleDateString('pt-BR')
+    };
+    
+    // Enviar via EmailJS - ATUALIZADO COM O TEMPLATE ID CORRETO
+    emailjs.send('service_x4iycxb', 'template_o0u2guc', templateParams)
+        .then(function(response) {
+            console.log('✅ Newsletter subscription enviada!', response);
+            
+            // Mostrar mensagem de sucesso
+            showNotification('🎉 Inscrição realizada com sucesso! Bem-vindo à nossa newsletter técnica.', 'success');
+            
+            // Limpar campo
+            emailInput.value = '';
+            
+        }, function(error) {
+            console.error('❌ Erro ao inscrever na newsletter:', error);
+            showNotification('❌ Erro ao processar inscrição. Tente novamente em alguns instantes.', 'error');
+        })
+        .finally(function() {
+            // Restaurar botão
+            subscribeButton.innerHTML = originalText;
+            subscribeButton.disabled = false;
+            subscribeButton.style.opacity = '1';
+        });
+}
+
+// Função para validar email
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+
+
+
+
 
 // Header fixo simples com efeito de scroll
 function initHeaderScrollEffect() {
@@ -993,6 +1219,8 @@ function initHeaderScrollEffect() {
         return;
     }
     
+    let ticking = false;
+    
     // Adicionar/remover classe scrolled baseado na posição do scroll
     function handleScroll() {
         if (window.scrollY > 50) {
@@ -1000,23 +1228,39 @@ function initHeaderScrollEffect() {
         } else {
             header.classList.remove('scrolled');
         }
+        ticking = false;
     }
     
-    // Event listener para scroll
-    window.addEventListener('scroll', handleScroll);
+    // Event listener para scroll com throttling
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
     
     // Inicializar estado
     handleScroll();
 }
 
-// Adicionar após a função initChart
+// Melhorar o evento de resize
 let resizeTimeout;
+let lastWidth = window.innerWidth;
+
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        if (typeof initChart === 'function') {
+        // Só recriar se a largura mudou significativamente
+        const currentWidth = window.innerWidth;
+        const widthDifference = Math.abs(currentWidth - lastWidth);
+        
+        if (widthDifference > 50 && typeof initChart === 'function') {
+            console.log('📏 Redimensionamento significativo detectado, recriando gráfico');
+            lastWidth = currentWidth;
             initChart();
         }
-    }, 250); // Debounce de 250ms
+    }, 500); // Aumentar debounce para 500ms
 });
 

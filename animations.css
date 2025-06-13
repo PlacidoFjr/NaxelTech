@@ -43,15 +43,17 @@
     100% { transform: scale(1); }
 }
 
+/* Remover animação infinita da logo - só animar no hover */
 .logo-animate {
     display: inline-block;
     position: relative;
-    animation: logoGlow 3s infinite;
+    /* animation: logoGlow 3s infinite; <- REMOVER ESTA LINHA */
     transition: all 0.3s ease;
 }
 
+/* Manter apenas no hover */
 .logo-animate:hover {
-    animation: logoScale 0.5s ease;
+    /* animation: logoGlow 2s ease-in-out; <- COMENTAR ESTA LINHA */
     transform-origin: center;
     letter-spacing: 0.5px;
 }

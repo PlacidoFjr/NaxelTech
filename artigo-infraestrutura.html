@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infraestrutura de TI Moderna para Escritórios - NexoTech</title>
     <meta name="description" content="Descubra como modernizar a infraestrutura de TI do seu escritório para máxima eficiência e produtividade.">
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- REMOVER O SCRIPT DE MODO ESCURO -->
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,20 +17,6 @@
     <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="artigo-infraestrutura.css">
     <script src="script.js" defer></script>
-    <!-- Script para prevenir flash do modo escuro -->
-    <script>
-        (function() {
-            // Verificar preferência do sistema
-            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            // Verificar preferência salva
-            const savedDarkMode = localStorage.getItem('darkMode');
-            
-            // Aplicar modo escuro baseado na preferência salva ou na preferência do sistema
-            if (savedDarkMode === 'true' || (savedDarkMode === null && prefersDarkMode)) {
-                document.body.classList.add('dark');
-            }
-        })();
-    </script>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
@@ -40,14 +29,8 @@
                 <a href="index.html#artigos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Artigos</a>
                 <a href="index.html#contato" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contato</a>
             </div>
-            <!-- Botão de modo escuro -->
-            <!-- Corrigir a estrutura do header (linhas ~35-45) -->
+            <!-- REMOVER O BOTÃO DE MODO ESCURO -->
             <div class="flex items-center space-x-4">
-                <button id="dark-mode-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-300" title="Alternar modo escuro">
-                    <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
                 <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -68,12 +51,12 @@
 
     <main class="container mx-auto px-6 py-12">
         <article class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
+            <div class="mb-12">
                 <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Como Dimensionar Corretamente sua Rede Wi-Fi</h1>
                 <p class="text-xl text-slate-600 mb-8">Um guia prático para garantir que sua conexão sem fio atenda às necessidades do seu escritório, evitando problemas de desempenho.</p>
-                <div class="flex items-center justify-center space-x-4 text-slate-500">
-                    <span> Publicado em 05 de Julho, 2025</span>
-                    <span> 10 min de leitura</span>
+                <div class="flex items-start space-x-4 text-slate-500">
+                    <span>📅 Publicado em 05 de Julho, 2025</span>
+                    <span>⏱️ 10 min de leitura</span>
                 </div>
             </div>
 
@@ -198,12 +181,5 @@
             </div>
         </article>
     </main>
-
-    <footer class="bg-slate-800 text-slate-300 py-8 mt-16">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 NexoTech Consultoria. Todos os direitos reservados.</p>
-            <p class="mt-2 text-sm">Transformando tecnologia em vantagem competitiva.</p>
-        </div>
-    </footer>
 </body>
 </html>

@@ -7,6 +7,10 @@
     <meta name="keywords" content="consultoria TI, infraestrutura tecnológica, escritórios, análise de necessidades, equipamentos, suporte técnico">
     <meta name="author" content="NexoTech Consultoria">
     <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexotech.com.br">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
     <meta property="og:title" content="NexoTech Consultoria: TI Estratégica para Novos Escritórios">
     <meta property="og:description" content="Soluções de TI personalizadas para o sucesso do seu novo escritório.">
     <meta property="og:type" content="website">
@@ -15,12 +19,12 @@
     <meta name="twitter:card" content="summary_large_image">
     
     <title>NexoTech Consultoria: TI Estratégica para Novos Escritórios</title>
-    <!-- Modifique as tags de script existentes -->
     <script src="https://cdn.tailwindcss.com" defer></script>
-    <!-- Problema: Chart.js carrega com defer, mas scripts locais executam imediatamente -->
-    <!-- No <head>, manter apenas: -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  
+    <!-- REMOVIDO: script dark-mode.js -->
+    <!-- REMOVIDO: Script do modo escuro -->
+    <script src="calculator.js" defer></script>
+    <script src="animations.js" defer></script>
     <script src="script.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +33,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile.css">
     <link rel="stylesheet" href="animations.css">
+    <!-- REMOVIDO: Todo o script de verificação de modo escuro -->
     <script>
         (function() {
             // Verificar preferência do sistema
@@ -44,13 +49,13 @@
     </script>
     
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 pt-16">
   
     <div class="tech-background">
         <canvas id="tech-canvas"></canvas>
     </div>
     
-    <header class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
+    <header class="bg-white/95 backdrop-blur-md shadow-lg fixed top-0 left-0 right-0 w-full z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold text-blue-600 logo-animate">Nexo<span class="text-slate-700">Tech</span></a>
             <div class="hidden md:flex space-x-8">
@@ -61,25 +66,20 @@
                 <a href="#contato" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contato</a>
             </div>
             
-            <!-- Botão de modo escuro -->
+            <!-- Botão mobile menu -->
             <div class="flex items-center space-x-4">
-                <button id="dark-mode-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-300" title="Alternar entre modo claro e escuro" aria-label="Botão para alternar modo escuro">
-                    <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
-                <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
+                <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none" aria-label="Abrir menu de navegação">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg absolute w-full left-0 top-full z-50">
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full left-0 top-full z-50">
             <div class="nav-links flex flex-col p-4 space-y-2">
-                <a href="index.html#desafio" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">O Desafio</a>
-                <a href="index.html#servicos" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Nossos Serviços</a>
-                <a href="index.html#beneficios" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Benefícios</a>
-                <a href="index.html#artigos" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Artigos</a>
-                <a href="index.html#contato" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Contato</a>
+                <a href="index.html#desafio" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">O Desafio</a>
+                <a href="index.html#servicos" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Nossos Serviços</a>
+                <a href="index.html#beneficios" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Benefícios</a>
+                <a href="index.html#artigos" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Artigos</a>
+                <a href="index.html#contato" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Contato</a>
             </div>
         </div>
     </header>
@@ -87,39 +87,39 @@
     <main class="container mx-auto px-6">
 
         <section id="hero" class="text-center py-20 md:py-32 bg-gradient-to-br from-slate-50 to-blue-100 rounded-b-3xl -mx-6 px-6 animate-on-scroll">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">Potencialize Seu Novo Escritório com a <span class="text-blue-600">NexoTech</span></h1>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">Potencialize seu novo escritório com a <span class="text-blue-600">NexoTech</span></h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">Transformamos a tecnologia numa vantagem competitiva para o seu negócio, com soluções de TI estratégicas, seguras e sob medida.</p>
-            <a href="#servicos" class="bg-blue-600 text-white font-semibold py-3 px-10 rounded-lg text-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">Descubra Nossas Soluções</a>
+            <a href="#servicos" class="bg-blue-600 text-white font-semibold py-3 px-10 rounded-lg text-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">Descubra nossas soluções</a>
         </section>
 
         <section id="desafio" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">O Desafio: Armadilhas Comuns</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">O Desafio: Armadilhas comuns</h2>
                 <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Muitos escritórios em arranque enfrentam obstáculos tecnológicos. Identifique os riscos e veja como a NexoTech pode ajudar.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Aquisições Inadequadas</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Aquisições inadequadas</h3>
                     <p class="text-slate-600 text-sm">Custos desnecessários com equipamentos sobredimensionados ou frustração com máquinas de baixo desempenho.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de Planeamento de Rede</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de planeamento de rede</h3>
                     <p class="text-slate-600 text-sm">Conectividade lenta, falhas constantes e vulnerabilidades de segurança que paralisam a operação.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Segurança Negligenciada</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Segurança negligenciada</h3>
                     <p class="text-slate-600 text-sm">Risco elevado de perda de dados críticos e exposição a ciberataques por falta de backups e firewalls.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Incompatibilidade Geral</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Incompatibilidade geral</h3>
                     <p class="text-slate-600 text-sm">Problemas de fluxo de trabalho causados por software e hardware que não se integram corretamente.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Custos Ocultos</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Custos ocultos</h3>
                     <p class="text-slate-600 text-sm">Gastos imprevistos com manutenções urgentes e perda de produtividade devido a falhas constantes.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de Escalabilidade</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de escalabilidade</h3>
                     <p class="text-slate-600 text-sm">Soluções que não acompanham o crescimento da empresa, exigindo reinvestimentos prematuros.</p>
                 </div>
             </div>
@@ -127,7 +127,7 @@
 
         <section id="servicos" class="py-16 md:py-24 scroll-mt-20 bg-slate-100 -mx-6 px-6 rounded-3xl animate-on-scroll">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">A Solução: Nossos Serviços Especializados</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">A Solução: Nossos serviços especializados</h2>
                 <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">Oferecemos um portfólio completo para construir a sua infraestrutura ideal. Clique num desafio no gráfico para ver o serviço que o soluciona.</p>
             </div>
 
@@ -137,28 +137,28 @@
             
             <div id="services-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="1">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Análise de Necessidades</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Análise de necessidades</h3>
                     <p class="text-slate-600 text-sm">Mapeamento de perfis, levantamento de requisitos de software e hardware para uma base sólida. Nossa análise detalhada inclui entrevistas com stakeholders, avaliação do ambiente atual, identificação de gargalos operacionais e projeção de necessidades futuras.</p>
                 </div>
                 <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="2">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Recomendação de Equipamentos</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Recomendação de equipamentos</h3>
                     <p class="text-slate-600 text-sm">Seleção otimizada de CPU, RAM, SSD, monitores e periféricos para máxima produtividade.</p>
                 </div>
                 <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="3">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Planejamento de Infraestrutura</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Planejamento de infraestrutura</h3>
                     <p class="text-slate-600 text-sm">Consultoria técnica especializada: mapeamento de pontos de rede e Wi-Fi, especificação de equipamentos (modem, roteador, Access Points), sugestões de backup e plano básico de segurança. Entregamos inteligência e direcionamento técnico - sem execução de obras.</p>
             
                 </div>
                 <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="4">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Montagem Personalizada</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Montagem personalizada</h3>
                     <p class="text-slate-600 text-sm">Montagem de máquinas sob medida com testes rigorosos de performance e estabilidade.</p>
                 </div>
                 <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="5">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Relatório Técnico Final</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Relatório técnico Final</h3>
                     <p class="text-slate-600 text-sm">Documentação completa, justificativas técnicas e orientações de uso e manutenção para o futuro.</p>
                 </div>
                 <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="6">
-                    <h3 class="font-semibold text-xl text-blue-600"><span class="mr-2"></span>Suporte Contínuo</h3>
+                    <h3 class="font-semibold text-xl text-blue-600"><span class="mr-2"></span>Suporte contínuo</h3>
                     <p class="text-slate-600 text-sm">Planos de suporte técnico para garantir manutenção, resolução de problemas e atualizações.</p>
                 </div>
             </div>
@@ -166,38 +166,38 @@
         
         <section id="beneficios" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Seus Benefícios Diretos</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Seus benefícios diretos</h2>
                  <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Investir em TI estratégica com a NexoTech traduz-se em vantagens competitivas claras para o seu negócio.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 <div class="text-center p-6 group">
                     <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[-5deg] transition-transform duration-300 ease-in-out mb-3">💰</span>
-                    <h3 class="font-semibold text-xl my-2">Otimização de Custos</h3>
+                    <h3 class="font-semibold text-xl my-2">Otimização de custos</h3>
                     <p class="text-slate-600 text-sm">Evite gastos desnecessários e reduza custos a longo prazo com uma infraestrutura bem planeada.</p>
                 </div>
                 <div class="text-center p-6 group">
                     <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300 ease-in-out mb-3">🚀</span>
-                    <h3 class="font-semibold text-xl my-2">Aumento da Produtividade</h3>
+                    <h3 class="font-semibold text-xl my-2">Aumento da produtividade</h3>
                     <p class="text-slate-600 text-sm">Colaboradores mais eficientes e satisfeitos com equipamentos e sistemas adequados às suas funções.</p>
                 </div>
                 <div class="text-center p-6 group">
                     <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[-5deg] transition-transform duration-300 ease-in-out mb-3">🛡️</span>
-                    <h3 class="font-semibold text-xl my-2">Segurança Reforçada</h3>
+                    <h3 class="font-semibold text-xl my-2">Segurança reforçada</h3>
                     <p class="text-slate-600 text-sm">Proteja seus dados valiosos e a continuidade do seu negócio com soluções de segurança robustas.</p>
                 </div>
                 <div class="text-center p-6 group">
                     <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300 ease-in-out mb-3">📈</span>
-                    <h3 class="font-semibold text-xl my-2">Escalabilidade Garantida</h3>
+                    <h3 class="font-semibold text-xl my-2">Escalabilidade garantida</h3>
                     <p class="text-slate-600 text-sm">Uma base tecnológica preparada para acompanhar o crescimento da sua empresa sem grandes disrupções.</p>
                 </div>
                 <div class="text-center p-6 group">
                     <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[-5deg] transition-transform duration-300 ease-in-out mb-3">🎯</span>
-                    <h3 class="font-semibold text-xl my-2">Foco no Seu Negócio</h3>
+                    <h3 class="font-semibold text-xl my-2">Foco no seu negócio</h3>
                     <p class="text-slate-600 text-sm">Deixe a complexidade da TI conosco e concentre-se no que faz de melhor: gerir e expandir o seu negócio.</p>
                 </div>
                 <div class="text-center p-6 group">
                     <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300 ease-in-out mb-3">💡</span>
-                    <h3 class="font-semibold text-xl my-2">Decisão Informada</h3>
+                    <h3 class="font-semibold text-xl my-2">Decisão informada</h3>
                     <p class="text-slate-600 text-sm">Receba aconselhamento especializado para tomar as melhores decisões tecnológicas para o seu futuro.</p>
                 </div>
             </div>
@@ -206,7 +206,7 @@
         <!-- Seção de Artigos -->
         <section id="artigos" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Artigos Especializados</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Artigos especializados</h2>
                 <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Aprofunde seus conhecimentos com nossos guias técnicos especializados em infraestrutura de TI.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -256,7 +256,7 @@
         <section id="calculadora" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
             <div class="container">
                 <div class="calculator-header">
-                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Calculadora de Orçamento</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Calculadora de orçamento</h2>
                     <p class="text-center text-slate-600 mb-12">Obtenha uma estimativa personalizada para os serviços de TI do seu escritório</p>
                 </div>
 
@@ -264,7 +264,7 @@
                     <form id="calculator-form" class="calculator-form">
                         <!-- Número de Funcionários -->
                         <div class="form-section">
-                            <h3>Número de Funcionários</h3>
+                            <h3>Número de funcionários</h3>
                             <div class="radio-group">
                                 <label class="radio-option">
                                     <input type="radio" name="employees" value="1-5" data-multiplier="1">
@@ -364,7 +364,7 @@
                                     <input type="checkbox" name="services" value="analise" data-price="1500">
                                     <span class="checkbox-custom"></span>
                                     <div class="option-content">
-                                        <strong>Análise de Necessidades</strong>
+                                        <strong>Análise de necessidades</strong>
                                         <small>Mapeamento completo dos requisitos</small>
                                         <span class="price">R$ 1.500</span>
                                     </div>
@@ -373,7 +373,7 @@
                                     <input type="checkbox" name="services" value="equipamentos" data-price="2000">
                                     <span class="checkbox-custom"></span>
                                     <div class="option-content">
-                                        <strong>Recomendação de Equipamentos</strong>
+                                        <strong>Recomendação de equipamentos</strong>
                                         <small>Seleção otimizada de hardware</small>
                                         <span class="price">R$ 2.000</span>
                                     </div>
@@ -382,7 +382,7 @@
                                     <input type="checkbox" name="services" value="infraestrutura" data-price="3500">
                                     <span class="checkbox-custom"></span>
                                     <div class="option-content">
-                                        <strong>Planeamento de Infraestrutura</strong>
+                                        <strong>Planeamento de infraestrutura</strong>
                                         <small>Rede, Wi-Fi, backup e segurança</small>
                                         <span class="price">R$ 3.500</span>
                                     </div>
@@ -391,7 +391,7 @@
                                     <input type="checkbox" name="services" value="montagem" data-price="1200">
                                     <span class="checkbox-custom"></span>
                                     <div class="option-content">
-                                        <strong>Montagem Personalizada</strong>
+                                        <strong>Montagem personalizada</strong>
                                         <small>Montagem e testes de equipamentos</small>
                                         <span class="price">R$ 1.200</span>
                                     </div>
@@ -400,7 +400,7 @@
                                     <input type="checkbox" name="services" value="relatorio" data-price="800">
                                     <span class="checkbox-custom"></span>
                                     <div class="option-content">
-                                        <strong>Relatório Técnico Final</strong>
+                                        <strong>Relatório técnico final</strong>
                                         <small>Documentação completa do projeto</small>
                                         <span class="price">R$ 800</span>
                                     </div>
@@ -409,7 +409,7 @@
                                     <input type="checkbox" name="services" value="suporte" data-price="500">
                                     <span class="checkbox-custom"></span>
                                     <div class="option-content">
-                                        <strong>Suporte Contínuo (mensal)</strong>
+                                        <strong>Suporte contínuo (mensal)</strong>
                                         <small>Manutenção e suporte técnico</small>
                                         <span class="price">R$ 500/mês</span>
                                     </div>
@@ -421,14 +421,14 @@
                     <!-- Resultado -->
                     <div class="result-container" id="result-container">
                         <div class="result-header">
-                            <h3>Estimativa de Investimento</h3>
+                            <h3>Estimativa de investimento</h3>
                         </div>
                         <div class="result-content">
                             <div class="result-breakdown" id="result-breakdown">
                                 <p>Selecione as opções acima para ver a estimativa</p>
                             </div>
                             <div class="result-total" id="result-total">
-                                <span class="total-label">Total Estimado:</span>
+                                <span class="total-label">Total estimado:</span>
                                 <span class="total-value">R$ 0</span>
                             </div>
                             <div class="result-details">
@@ -436,8 +436,8 @@
                                 <small class="total-disclaimer">Valores podem variar conforme especificações técnicas</small>
                             </div>
                             <div class="result-actions">
-                                <button type="button" class="btn-contact" onclick="sendQuote()">Solicitar Orçamento Detalhado</button>
-                                <button type="button" class="btn-reset" onclick="resetCalculator()">Recalcular</button>
+                                <button type="button" class="btn-contact" onclick="sendQuote()" aria-label="Solicitar orçamento detalhado por telefone">Solicitar Orçamento Detalhado</button>
+                                <button type="button" class="btn-reset" onclick="resetCalculator()" aria-label="Limpar calculadora e recalcular">Recalcular</button>
                             </div>
                         </div>
                     </div>
@@ -446,34 +446,34 @@
         </section>
 
         <section id="contato" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
-             <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-8 md:p-12 lg:p-16 text-white">
-                <div class="text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold">Pronto para Começar a Transformação Digital?</h2>
-                    <p class="mt-4 text-lg text-blue-100 max-w-2xl mx-auto">Vamos conversar sobre como a NexoTech pode construir a base tecnológica para o sucesso do seu novo escritório. O primeiro passo é simples.</p>
-   
-                    <a href="https://wa.me/5571999195766?text=Olá! Tenho interesse em consultoria de TI para meu escritório." class="contact-button mt-10 inline-block bg-white text-blue-600 font-bold py-4 px-10 rounded-lg text-lg hover:bg-slate-100 transition-colors duration-300 shadow-md">Agende uma Conversa Estratégica</a>
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-8 md:p-12 lg:p-16 text-white">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto para Começar a Transformação Digital?</h2>
+                    <p class="text-lg text-blue-100 mb-8">Vamos conversar sobre como a NexoTech pode construir a base tecnológica para o sucesso do seu novo escritório. O primeiro passo é simples.</p>
+        
+                    <a href="https://wa.me/5571999195766?text=Olá! Tenho interesse em consultoria de TI para meu escritório." class="contact-button inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-slate-100 transition-colors duration-300 shadow-md mb-8">Agende uma Conversa Estratégica</a>
                     
-                    <p class="mt-6 text-blue-100">Ou preencha o formulário abaixo:</p>
+                    <p class="text-blue-100 mb-6">Ou preencha o formulário abaixo:</p>
                     
-                    <form id="contact-form" class="mt-6 max-w-lg mx-auto text-left bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                        <div class="mb-4">
+                    <form id="contact-form" class="max-w-md mx-auto text-left bg-white/10 backdrop-blur-sm p-6 rounded-xl space-y-4">
+                        <div>
                             <label for="name" class="block text-blue-100 mb-2 text-sm font-medium">Nome</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg bg-white/80 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white" required>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg bg-white/90 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white" required>
                         </div>
-                        <div class="mb-4">
+                        <div>
                             <label for="email" class="block text-blue-100 mb-2 text-sm font-medium">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg bg-white/80 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white" required>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg bg-white/90 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white" required>
                         </div>
-                        <div class="mb-4">
+                        <div>
                             <label for="phone" class="block text-blue-100 mb-2 text-sm font-medium">Telefone</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded-lg bg-white/80 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white">
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg bg-white/90 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white">
                         </div>
-                        <div class="mb-4">
+                        <div>
                             <label for="message" class="block text-blue-100 mb-2 text-sm font-medium">Mensagem</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg bg-white/80 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white" required></textarea>
+                            <textarea id="message" name="message" rows="3" class="w-full px-4 py-3 rounded-lg bg-white/90 text-blue-900 focus:outline-none focus:ring-2 focus:ring-white" required></textarea>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition-colors duration-300 shadow-md">Enviar Mensagem</button>
+                        <div class="text-center pt-2">
+                            <button type="submit" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition-colors duration-300 shadow-md" aria-label="Enviar mensagem de contato">Enviar Mensagem</button>
                         </div>
                     </form>
                 </div>
@@ -490,23 +490,7 @@
                 <div>
                     <h3 class="text-white font-bold text-lg mb-4">NexoTech Consultoria</h3>
                     <p class="text-sm mb-4 leading-relaxed">Especialistas em soluções de TI para escritórios. Transformamos desafios tecnológicos em oportunidades de crescimento.</p>
-                    <div class="flex space-x-3">
-                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z"/>
-                            </svg>
-                        </a>
-                    </div>
+                    
                 </div>
 
                 <!-- Coluna 2: Serviços -->
@@ -569,137 +553,200 @@
             </div>
         </div>
 
-        <!-- Newsletter -->
-        <div class="border-t border-slate-700 pt-8 mb-8">
-            <div class="max-w-md mx-auto text-center">
-                <h3 class="text-white font-bold text-lg mb-2">Newsletter Técnica</h3>
-                <p class="text-sm mb-4">Receba dicas e novidades sobre TI para escritórios</p>
-                <div class="flex">
-                    <input type="email" placeholder="Seu e-mail" class="flex-1 px-4 py-2 rounded-l-lg bg-slate-700 text-white placeholder-slate-400 border border-slate-600 focus:outline-none focus:border-blue-400">
-                    <button class="px-6 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 transition-colors">
-                        Inscrever
-                    </button>
+        <!-- Newsletter Melhorada -->
+        <div class="border-t border-slate-700/50 pt-8 mb-8">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 rounded-2xl p-8 backdrop-blur-sm border border-slate-600/30">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-xl">Newsletter Técnica</h3>
+                    </div>
+                    <p class="text-slate-400 mb-6">Receba dicas exclusivas, novidades e insights sobre TI para escritórios</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="email" placeholder="Seu melhor e-mail" class="flex-1 px-4 py-3 rounded-xl bg-slate-700/50 text-white placeholder-slate-400 border border-slate-600 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all">
+                        <button class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-medium hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25" aria-label="Solicitar consultoria gratuita">
+                            <span class="flex items-center justify-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                                Inscrever
+                            </span>
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4 flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Enviamos apenas conteúdo relevante. Sem spam.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Rodapé Final Melhorado -->
-        <div class="border-t border-slate-700 pt-6">
-            <div class="text-center mb-4">
-                <p class="text-sm">&copy; 2025 NexoTech Consultoria. Todos os direitos reservados.</p>
-                <p class="text-sm mt-1 text-slate-400">Construindo o futuro tecnológico do seu negócio.</p>
-            </div>
-            <!-- Links de políticas em grid responsivo -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-sm">
-                <a href="politica-privacidade.html" class="hover:text-blue-400 transition-colors py-2">Política de Privacidade</a>
-                <a href="#" class="hover:text-blue-400 transition-colors py-2">Termos de Uso</a>
-                <a href="#" class="hover:text-blue-400 transition-colors py-2">Política de Cookies</a>
+        <!-- Rodapé Final -->
+        <div class="border-t border-slate-700/50 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-center md:text-left">
+                    <p class="text-slate-400 text-sm">
+                        © 2024 NexoTech Consultoria. Todos os direitos reservados.
+                    </p>
+                    <p class="text-slate-500 text-xs mt-1">
+                        Desenvolvido com ❤️ para transformar sua TI
+                    </p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 text-xs">
+                    <a href="politica-privacidade.html" class="text-slate-400 hover:text-blue-400 transition-colors px-3 py-1 rounded-lg hover:bg-slate-800/50">
+                        Política de Privacidade
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors px-3 py-1 rounded-lg hover:bg-slate-800/50">
+                        Termos de Uso
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors px-3 py-1 rounded-lg hover:bg-slate-800/50">
+                        Cookies
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </footer>
 
-    <!-- Adicionar EmailJS SDK antes do script.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("3hJVCbwQwqXVfEjM2"); // Sua Public Key do EmailJS
-        })();
-    </script>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">Pular para conteúdo principal</a>
 
-    <!-- No <head>, manter apenas: -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
-    <!-- REMOVER todas estas linhas do head: -->
-    <!-- <script src="dark-mode.js"></script> -->
-    <!-- <script src="calculator.js"></script> -->
-    <!-- <script src="animations.js"></script> -->
-    <!-- <script src="script.js"></script> -->
-    <!-- <script src="script.js" defer></script> -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="animations.css">
-    <script>
-        (function() {
-            // Verificar preferência do sistema
-            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            // Verificar preferência salva
-            const savedDarkMode = localStorage.getItem('darkMode');
-            
-            // Aplicar modo escuro baseado na preferência salva ou na preferência do sistema
-            if (savedDarkMode === 'true' || (savedDarkMode === null && prefersDarkMode)) {
-                document.body.classList.add('dark');
-            }
-        })();
-    </script>
-    
-</head>
-<body class="bg-slate-50 text-slate-800">
-  
-    <div class="tech-background">
-        <canvas id="tech-canvas"></canvas>
-    </div>
-    
-    <header class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-blue-600 logo-animate">Nexo<span class="text-slate-700">Tech</span></a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#desafio" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">O Desafio</a>
-                <a href="#servicos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Nossos Serviços</a>
-                <a href="#beneficios" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Benefícios</a>
-                <a href="#artigos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Artigos</a>
-                <a href="#contato" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contato</a>
-            </div>
-            
-            <!-- Botão de modo escuro -->
-            <div class="flex items-center space-x-4">
-                <button id="dark-mode-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-300" title="Alternar entre modo claro e escuro" aria-label="Botão para alternar modo escuro">
-                    <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
-                <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg absolute w-full left-0 top-full z-50">
-            <div class="nav-links flex flex-col p-4 space-y-2">
-                <a href="index.html#desafio" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">O Desafio</a>
-                <a href="index.html#servicos" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Nossos Serviços</a>
-                <a href="index.html#beneficios" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Benefícios</a>
-                <a href="index.html#artigos" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Artigos</a>
-                <a href="index.html#contato" class="block py-3 px-4 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Contato</a>
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-6">
+<main id="main-content" role="main">
+    <div class="container mx-auto px-6">
 
         <section id="hero" class="text-center py-20 md:py-32 bg-gradient-to-br from-slate-50 to-blue-100 rounded-b-3xl -mx-6 px-6 animate-on-scroll">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">Potencialize Seu Novo Escritório com a <span class="text-blue-600">NexoTech</span></h1>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">Potencialize seu novo escritório com a <span class="text-blue-600">NexoTech</span></h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">Transformamos a tecnologia numa vantagem competitiva para o seu negócio, com soluções de TI estratégicas, seguras e sob medida.</p>
-            <a href="#servicos" class="bg-blue-600 text-white font-semibold py-3 px-10 rounded-lg text-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">Descubra Nossas Soluções</a>
+            <a href="#servicos" class="bg-blue-600 text-white font-semibold py-3 px-10 rounded-lg text-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">Descubra nossas soluções</a>
         </section>
 
         <section id="desafio" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">O Desafio: Armadilhas Comuns</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">O Desafio: Armadilhas comuns</h2>
                 <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Muitos escritórios em arranque enfrentam obstáculos tecnológicos. Identifique os riscos e veja como a NexoTech pode ajudar.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Aquisições Inadequadas</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Aquisições inadequadas</h3>
                     <p class="text-slate-600 text-sm">Custos desnecessários com equipamentos sobredimensionados ou frustração com máquinas de baixo desempenho.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de Planeamento de Rede</h3>
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de planeamento de rede</h3>
                     <p class="text-slate-600 text-sm">Conectividade lenta, falhas constantes e vulnerabilidades de segurança que paralisam a operação.</p>
                 </div>
                 <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
-                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Segurança Negligenciada</h3>
-                    <p class="text-
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Segurança negligenciada</h3>
+                    <p class="text-slate-600 text-sm">Risco elevado de perda de dados críticos e exposição a ciberataques por falta de backups e firewalls.</p>
+                </div>
+                <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Incompatibilidade geral</h3>
+                    <p class="text-slate-600 text-sm">Problemas de fluxo de trabalho causados por software e hardware que não se integram corretamente.</p>
+                </div>
+                <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Custos ocultos</h3>
+                    <p class="text-slate-600 text-sm">Gastos imprevistos com manutenções urgentes e perda de produtividade devido a falhas constantes.</p>
+                </div>
+                <div class="challenge-card bg-white p-6 rounded-xl shadow-lg transition-all duration-300">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-500"><span class="mr-2"></span>Falta de escalabilidade</h3>
+                    <p class="text-slate-600 text-sm">Soluções que não acompanham o crescimento da empresa, exigindo reinvestimentos prematuros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="py-16 md:py-24 scroll-mt-20 bg-slate-100 -mx-6 px-6 rounded-3xl animate-on-scroll">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">A Solução: Nossos serviços especializados</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">Oferecemos um portfólio completo para construir a sua infraestrutura ideal. Clique num desafio no gráfico para ver o serviço que o soluciona.</p>
+            </div>
+
+            <div class="chart-container mb-12 md:mb-16">
+                <canvas id="challenges-chart"></canvas>
+            </div>
+            
+            <div id="services-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="1">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Análise de necessidades</h3>
+                    <p class="text-slate-600 text-sm">Mapeamento de perfis, levantamento de requisitos de software e hardware para uma base sólida. Nossa análise detalhada inclui entrevistas com stakeholders, avaliação do ambiente atual, identificação de gargalos operacionais e projeção de necessidades futuras.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="2">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Recomendação de equipamentos</h3>
+                    <p class="text-slate-600 text-sm">Seleção otimizada de CPU, RAM, SSD, monitores e periféricos para máxima produtividade.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="3">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Planejamento de infraestrutura</h3>
+                    <p class="text-slate-600 text-sm">Consultoria técnica especializada: mapeamento de pontos de rede e Wi-Fi, especificação de equipamentos (modem, roteador, Access Points), sugestões de backup e plano básico de segurança. Entregamos inteligência e direcionamento técnico - sem execução de obras.</p>
+            
+                </div>
+                <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="4">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Montagem personalizada</h3>
+                    <p class="text-slate-600 text-sm">Montagem de máquinas sob medida com testes rigorosos de performance e estabilidade.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="5">
+                    <h3 class="font-semibold text-xl mb-3 text-blue-600"><span class="mr-2"></span>Relatório técnico Final</h3>
+                    <p class="text-slate-600 text-sm">Documentação completa, justificativas técnicas e orientações de uso e manutenção para o futuro.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300" data-service-id="6">
+                    <h3 class="font-semibold text-xl text-blue-600"><span class="mr-2"></span>Suporte contínuo</h3>
+                    <p class="text-slate-600 text-sm">Planos de suporte técnico para garantir manutenção, resolução de problemas e atualizações.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="beneficios" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Seus benefícios diretos</h2>
+                 <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Investir em TI estratégica com a NexoTech traduz-se em vantagens competitivas claras para o seu negócio.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                <div class="text-center p-6 group">
+                    <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[-5deg] transition-transform duration-300 ease-in-out mb-3">💰</span>
+                    <h3 class="font-semibold text-xl my-2">Otimização de custos</h3>
+                    <p class="text-slate-600 text-sm">Evite gastos desnecessários e reduza custos a longo prazo com uma infraestrutura bem planeada.</p>
+                </div>
+                <div class="text-center p-6 group">
+                    <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300 ease-in-out mb-3">🚀</span>
+                    <h3 class="font-semibold text-xl my-2">Aumento da produtividade</h3>
+                    <p class="text-slate-600 text-sm">Colaboradores mais eficientes e satisfeitos com equipamentos e sistemas adequados às suas funções.</p>
+                </div>
+                <div class="text-center p-6 group">
+                    <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[-5deg] transition-transform duration-300 ease-in-out mb-3">🛡️</span>
+                    <h3 class="font-semibold text-xl my-2">Segurança reforçada</h3>
+                    <p class="text-slate-600 text-sm">Proteja seus dados valiosos e a continuidade do seu negócio com soluções de segurança robustas.</p>
+                </div>
+                <div class="text-center p-6 group">
+                    <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300 ease-in-out mb-3">📈</span>
+                    <h3 class="font-semibold text-xl my-2">Escalabilidade garantida</h3>
+                    <p class="text-slate-600 text-sm">Uma base tecnológica preparada para acompanhar o crescimento da sua empresa sem grandes disrupções.</p>
+                </div>
+                <div class="text-center p-6 group">
+                    <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[-5deg] transition-transform duration-300 ease-in-out mb-3">🎯</span>
+                    <h3 class="font-semibold text-xl my-2">Foco no seu negócio</h3>
+                    <p class="text-slate-600 text-sm">Deixe a complexidade da TI conosco e concentre-se no que faz de melhor: gerir e expandir o seu negócio.</p>
+                </div>
+                <div class="text-center p-6 group">
+                    <span class="text-5xl text-blue-500 inline-block group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300 ease-in-out mb-3">💡</span>
+                    <h3 class="font-semibold text-xl my-2">Decisão informada</h3>
+                    <p class="text-slate-600 text-sm">Receba aconselhamento especializado para tomar as melhores decisões tecnológicas para o seu futuro.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Artigos -->
+        <section id="artigos" class="py-16 md:py-24 scroll-mt-20 animate-on-scroll">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Artigos especializados</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Aprofunde seus conhecimentos com nossos guias técnicos especializados em infraestrutura de TI.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="article-card bg-white p-6 rounded-xl shadow-lg border-2 border-transparent transition-all duration-300 hover:border-blue-200 hover:shadow-xl">
+                    <div class="mb-4">
+                        <span class="text-4xl"></span>
+                    </div>
+                    <h3 class="font-semibold text-xl text-blue-600 mb-3">Segurança em TI</h3>
+                    <p class="text-slate-600 text-sm mb-4">Guia completo sobre implementação de
