@@ -1,5 +1,5 @@
 {
-  "name": "python",
+  "name": "naxeltech",
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
@@ -7,15 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PlacidoFjr/NexoTech.git"
+    "url": "git+https://github.com/PlacidoFjr/NaxelTech.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PlacidoFjr/NexoTech/issues"
+    "url": "https://github.com/PlacidoFjr/NaxelTech/issues"
   },
-  "homepage": "https://github.com/PlacidoFjr/NexoTech#readme",
+  "homepage": "https://github.com/PlacidoFjr/NaxelTech#readme",
   "description": "",
   "devDependencies": {
     "tailwindcss": "^4.1.10"
