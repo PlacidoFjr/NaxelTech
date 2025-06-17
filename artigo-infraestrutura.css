@@ -11,12 +11,27 @@ body {
     color: #1f2937;
 }
 
+/* Garantir que o header seja sticky */
 header {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
 }
 
-/* Box de objetivo - apenas tema claro */
+/* Mobile responsivo */
+@media (max-width: 768px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        width: 100% !important;
+        z-index: 1000 !important;
+    }
+    
+    body {
+        padding-top: 0 !important;
+    }
+}
+
 .bg-blue-50 {
     background-color: #eff6ff;
     border-color: #06b6d4;
@@ -68,4 +83,42 @@ header {
 
 .items-center {
     align-items: flex-start !important;
+}
+
+/* Mobile responsivo */
+@media (max-width: 768px) {
+    /* Centralização APENAS para mobile */
+    .text-center {
+        text-align: center !important;
+    }
+    
+    .justify-center {
+        justify-content: center !important;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        text-align: center !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        text-align: center !important;
+    }
+    
+    .bg-white {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    /* Header mobile fixa */
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+    }
+    
+    body {
+        padding-top: 0 !important;
+    }
 }

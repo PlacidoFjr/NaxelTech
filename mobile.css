@@ -49,40 +49,152 @@ main {
         font-size: 14px;
     }
     
-    /* Footer mobile - simplificado */
+    /* Footer mobile - OCULTO COMPLETAMENTE */
     footer {
-        background: #2d3748 !important;
-        color: #ffffff !important;
-        padding: 2rem 1rem !important;
-        margin-top: 2rem !important;
-        width: 100% !important;
-        position: relative !important;
-        bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-        text-align: center !important;
+        display: none !important;
     }
     
-    /* Ocultar conteúdo complexo do footer APENAS no mobile */
+    /* Remover todos os pseudo-elementos do footer */
+    footer::before,
+    footer::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Garantir que nenhum conteúdo do footer apareça */
+    footer *,
     footer .grid,
     footer .flex,
     footer > div > div {
         display: none !important;
     }
     
-    /* Apenas copyright simples APENAS no mobile */
+    /* Conteúdo personalizado para mobile */
+    footer::before {
+        content: "📱 NexoTech Consultoria\A\A📧 contato@nexotech.com.br\A📞 (71) 98152-5641\A📍 Salvador, BA - Atendimento Nacional\A🕒 Seg-Sex: 8h às 18h\A\A🔗 Links Úteis:\A• Infraestrutura de TI\A• Segurança Digital\A• Suporte Técnico\A• Artigos Técnicos\A• Orçamento Online";
+        display: block;
+        color: #e2e8f0;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        text-align: center;
+        white-space: pre-line;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Copyright simples */
     footer::after {
-        content: "© 2025 NexoTech Consultoria. Todos os direitos reservados.";
+        content: "© 2025 NexoTech Consultoria. Todos os direitos reservados.\A\ADesenvolvido com ❤️ para transformar sua TI";
         display: block;
         color: #a0aec0;
-        font-size: 0.8rem;
-        line-height: 1.5;
+        font-size: 0.75rem;
+        line-height: 1.4;
         text-align: center;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1rem;
+        padding-top: 0.75rem;
         margin: 0;
         width: 100%;
+        white-space: pre-line;
+    }
+    
+    /* Calculadora - Layout mobile */
+    .calculator-container {
+        display: block !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    .calculator-form {
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .result-container {
+        position: static !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    /* Seções do formulário */
+    .form-section {
+        margin-bottom: 1.5rem !important;
+        padding: 1rem !important;
+    }
+    
+    .form-section h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Grupos de opções */
+    .radio-group,
+    .checkbox-group {
+        gap: 0.75rem !important;
+    }
+    
+    /* Opções individuais */
+    .radio-option,
+    .checkbox-option {
+        padding: 0.75rem !important;
+        min-height: auto !important;
+    }
+    
+    .radio-option .option-content,
+    .checkbox-option .option-content {
+        gap: 0.5rem !important;
+    }
+    
+    .option-title {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+    }
+    
+    .option-description {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .option-price {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Container de resultado */
+    .result-header h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .result-breakdown {
+        gap: 0.5rem !important;
+    }
+    
+    .result-item {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .result-total {
+        padding: 1rem !important;
+        font-size: 1.1rem !important;
+    }
+    
+    /* Botões de ação */
+    .action-buttons {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        padding: 1rem !important;
+    }
+    
+    .contact-button,
+    .reset-button {
+        width: 100% !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+        min-height: 44px !important;
     }
 }
 
@@ -111,5 +223,578 @@ main {
     .chart-container {
         height: 250px !important;
         padding: 0.75rem !important;
+    }
+    
+    /* Calculadora - Telas muito pequenas */
+    .calculator-container {
+        padding: 0.75rem !important;
+    }
+    
+    .form-section {
+        padding: 0.75rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .form-section h3 {
+        font-size: 1rem !important;
+    }
+    
+    .radio-option,
+    .checkbox-option {
+        padding: 0.5rem !important;
+    }
+    
+    .option-title {
+        font-size: 0.85rem !important;
+    }
+    
+    .option-description {
+        font-size: 0.75rem !important;
+    }
+    
+    .option-price {
+        font-size: 0.8rem !important;
+    }
+    
+    .result-container {
+        padding: 0.75rem !important;
+    }
+    
+    .result-total {
+        font-size: 1rem !important;
+    }
+    
+    .contact-button,
+    .reset-button {
+        padding: 0.6rem 0.8rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Correções para visualização em telas de celular */
+    
+    /* Garantir que o conteúdo não saia da tela */
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Ajustar containers principais */
+    .container,
+    .max-w-7xl,
+    .max-w-6xl,
+    .max-w-4xl {
+        max-width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Seções de artigos */
+    .article-card {
+        margin: 0.5rem !important;
+        padding: 1rem !important;
+        width: calc(100% - 1rem) !important;
+    }
+    
+    /* Correção para classes de texto */
+    .text-slate-600 {
+        color: #475569 !important;
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .text-sm {
+        font-size: 0.875rem !important;
+        line-height: 1.25rem !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Grid responsivo */
+    .grid {
+        display: block !important;
+    }
+    
+    .grid > * {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Melhorar legibilidade */
+    p {
+        font-size: 0.875rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* Títulos responsivos */
+    h1 {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h3 {
+        font-size: 1.125rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Botões responsivos */
+    .btn,
+    button {
+        width: 100% !important;
+        padding: 0.75rem !important;
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Links responsivos */
+    a {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* Imagens responsivas */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Overflow horizontal */
+    body,
+    html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    
+    /* Seção específica que estava com problema */
+    section {
+        padding: 1rem !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Cards de artigos específicos */
+    .article-card p.text-slate-600 {
+        color: #475569 !important;
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    /* Ocultar apenas a newsletter no mobile */
+    .border-t.border-slate-700\/50.pt-8.mb-8 {
+        display: none !important;
+    }
+    
+    /* OU usando uma classe mais específica se preferir */
+    footer .border-t.border-slate-700\/50:first-child {
+        display: none !important;
+    }
+    
+    /* Remover todos os pseudo-elementos do footer */
+    footer::before,
+    footer::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Garantir que nenhum conteúdo do footer apareça */
+    footer *,
+    footer .grid,
+    footer .flex,
+    footer > div > div {
+        display: none !important;
+    }
+    
+    /* Conteúdo personalizado para mobile */
+    footer::before {
+        content: "📱 NexoTech Consultoria\A\A📧 contato@nexotech.com.br\A📞 (71) 98152-5641\A📍 Salvador, BA - Atendimento Nacional\A🕒 Seg-Sex: 8h às 18h\A\A🔗 Links Úteis:\A• Infraestrutura de TI\A• Segurança Digital\A• Suporte Técnico\A• Artigos Técnicos\A• Orçamento Online";
+        display: block;
+        color: #e2e8f0;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        text-align: center;
+        white-space: pre-line;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Copyright simples */
+    footer::after {
+        content: "© 2025 NexoTech Consultoria. Todos os direitos reservados.\A\ADesenvolvido com ❤️ para transformar sua TI";
+        display: block;
+        color: #a0aec0;
+        font-size: 0.75rem;
+        line-height: 1.4;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 0.75rem;
+        margin: 0;
+        width: 100%;
+        white-space: pre-line;
+    }
+    
+    /* Calculadora - Layout mobile */
+    .calculator-container {
+        display: block !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    .calculator-form {
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .result-container {
+        position: static !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    /* Seções do formulário */
+    .form-section {
+        margin-bottom: 1.5rem !important;
+        padding: 1rem !important;
+    }
+    
+    .form-section h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Grupos de opções */
+    .radio-group,
+    .checkbox-group {
+        gap: 0.75rem !important;
+    }
+    
+    /* Opções individuais */
+    .radio-option,
+    .checkbox-option {
+        padding: 0.75rem !important;
+        min-height: auto !important;
+    }
+    
+    .radio-option .option-content,
+    .checkbox-option .option-content {
+        gap: 0.5rem !important;
+    }
+    
+    .option-title {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+    }
+    
+    .option-description {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .option-price {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Container de resultado */
+    .result-header h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .result-breakdown {
+        gap: 0.5rem !important;
+    }
+    
+    .result-item {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .result-total {
+        padding: 1rem !important;
+        font-size: 1.1rem !important;
+    }
+    
+    /* Botões de ação */
+    .action-buttons {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        padding: 1rem !important;
+    }
+    
+    .contact-button,
+    .reset-button {
+        width: 100% !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+        min-height: 44px !important;
+    }
+}
+
+/* Media query para telas muito pequenas */
+@media (max-width: 480px) {
+    body {
+        padding-top: 60px !important;
+    }
+    
+    article {
+        padding: 0.75rem !important;
+    }
+    
+    article h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    article h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    article p {
+        font-size: 0.9rem !important;
+    }
+    
+    .chart-container {
+        height: 250px !important;
+        padding: 0.75rem !important;
+    }
+    
+    /* Calculadora - Telas muito pequenas */
+    .calculator-container {
+        padding: 0.75rem !important;
+    }
+    
+    .form-section {
+        padding: 0.75rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .form-section h3 {
+        font-size: 1rem !important;
+    }
+    
+    .radio-option,
+    .checkbox-option {
+        padding: 0.5rem !important;
+    }
+    
+    .option-title {
+        font-size: 0.85rem !important;
+    }
+    
+    .option-description {
+        font-size: 0.75rem !important;
+    }
+    
+    .option-price {
+        font-size: 0.8rem !important;
+    }
+    
+    .result-container {
+        padding: 0.75rem !important;
+    }
+    
+    .result-total {
+        font-size: 1rem !important;
+    }
+    
+    .contact-button,
+    .reset-button {
+        padding: 0.6rem 0.8rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Correções para visualização em telas de celular */
+    
+    /* Garantir que o conteúdo não saia da tela */
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Ajustar containers principais */
+    .container,
+    .max-w-7xl,
+    .max-w-6xl,
+    .max-w-4xl {
+        max-width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Seções de artigos */
+    .article-card {
+        margin: 0.5rem !important;
+        padding: 1rem !important;
+        width: calc(100% - 1rem) !important;
+    }
+    
+    /* Correção para classes de texto */
+    .text-slate-600 {
+        color: #475569 !important;
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .text-sm {
+        font-size: 0.875rem !important;
+        line-height: 1.25rem !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Grid responsivo */
+    .grid {
+        display: block !important;
+    }
+    
+    .grid > * {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Melhorar legibilidade */
+    p {
+        font-size: 0.875rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* Títulos responsivos */
+    h1 {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h3 {
+        font-size: 1.125rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Botões responsivos */
+    .btn,
+    button {
+        width: 100% !important;
+        padding: 0.75rem !important;
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Links responsivos */
+    a {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* Imagens responsivas */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Overflow horizontal */
+    body,
+    html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    
+    /* Seção específica que estava com problema */
+    section {
+        padding: 1rem !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Cards de artigos específicos */
+    .article-card p.text-slate-600 {
+        color: #475569 !important;
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    /* Estilos para o formulário de contato - Mobile */
+    #contact-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    #contact-form > div:last-child {
+        grid-column: 1 / -1;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    #contact-form input::placeholder,
+    #contact-form textarea::placeholder {
+        content: "Estimativa NaxelTech";
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    #contact-form input:focus,
+    #contact-form textarea:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+
+    #contact-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    #contact-form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
     }
 }

@@ -1,9 +1,23 @@
-// Script simplificado e funcional para NexoTech
+/**
+ * NaxelTech - Sistema de Calculadora de Orçamento
+ * Desenvolvido para estimar custos de serviços de TI
+ */
+// Script simplificado e funcional para NaxelTech
 console.log('🚀 Iniciando NexoTech...');
 
-// Aguardar carregamento da página
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM carregado!');
+// Variáveis globais da calculadora
+let calculatorData = {
+    total: 0,
+    services: [],
+    employeeMultiplier: 1,
+    complexityMultiplier: 1,
+    employees: null,
+    activity: null
+};
+
+// Função principal de inicialização
+function initializeApp() {
+    console.log('🚀 Inicializando aplicação...');
     
     // 1. Menu Mobile
     initMobileMenu();
@@ -12,32 +26,45 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     
     // 3. Animações
-    initAnimations();
+    if (typeof initAnimations === 'function') {
+        initAnimations();
+    }
     
-    // 4. Calculadora - com delay para garantir que todos os elementos estejam prontos
+    // 4. Gráfico
+    if (typeof initChart === 'function') {
+        initChart();
+    }
+    
+    // 5. Calculadora
     setTimeout(() => {
-        initCalculator();
+        if (typeof initCalculator === 'function') {
+            initCalculator();
+        }
     }, 100);
     
-    // 5. Gráfico
-    initChart();
-    
-    // 6. Efeito de scroll do header
+    // 7. Header scroll
     initHeaderScrollEffect();
     
-    // 7. Inicializar calculadora mobile se necessário
+    // 8. Inicializar calculadora mobile se necessário
     if (window.innerWidth <= 768) {
         initMobileCalculator();
     }
     
-    // 8. Formulário de contato
+    // 9. Formulário de contato
     initContactForm();
     
-    // 9. Newsletter
+    // 10. Newsletter
     initNewsletter();
     
-    console.log('✅ Todas as funcionalidades inicializadas!');
-});
+    console.log('✅ Aplicação inicializada com sucesso!');
+}
+
+// Aguardar carregamento completo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+    initializeApp();
+}
 
 // Função para menu mobile
 function initMobileMenu() {
@@ -223,20 +250,15 @@ function initSmoothScroll() {
     
     // Função para rolar suavemente para uma seção específica ao carregar a página
     function scrollToAnchorOnLoad() {
-        const hash = window.location.hash;
-        if (hash) {
-            setTimeout(() => {
-                const targetElement = document.querySelector(hash);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-                    const targetPosition = targetElement.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100);
+        // Sempre ir para o topo da página, ignorando qualquer hash
+        window.scrollTo({
+            top: 0,
+            behavior: 'auto'
+        });
+        
+        // Limpar o hash da URL sem recarregar a página
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
         }
     }
     
@@ -273,7 +295,7 @@ function initAnimations() {
         console.log('✅ Animação da logo inicializada');
     }
     
-    // IMPORTANTE: Chamar a função de animação da logo
+
     initLogoAnimation();
     
     // Animações de scroll
@@ -322,15 +344,7 @@ function initAnimations() {
     console.log('✅ Animações inicializadas');
 }
 
-// Variáveis da calculadora (manter apenas esta declaração)
-let calculatorData = {
-    total: 0,
-    services: [],
-    employeeMultiplier: 1,
-    complexityMultiplier: 1,
-    employees: null,
-    activity: null
-};
+
 
 // Função para inicializar calculadora
 function initCalculator() {
@@ -437,32 +451,33 @@ function updateCalculation() {
 }
 
 
-// Função para atualizar display
-// Função para atualizar display
+// Função para atualizar display - VERSÃO CORRIGIDA
 function updateResultDisplay() {
-    const breakdown = document.getElementById('result-breakdown');
-    const total = document.getElementById('result-total');
+    const resultBreakdown = document.getElementById('result-breakdown');
+    const resultTotal = document.getElementById('result-total');
     
-    if (!breakdown || !total) {
+    if (!resultBreakdown || !resultTotal) {
         console.log('⚠️ Elementos de resultado não encontrados');
         return;
     }
     
     if (calculatorData.services.length === 0) {
-        breakdown.innerHTML = '<div class="text-center py-8"><p class="text-slate-600">Selecione as opções acima para ver a estimativa</p></div>';
-        const totalValue = total.querySelector('.total-value');
-        if (totalValue) totalValue.textContent = 'R$ 0';
+        resultBreakdown.innerHTML = '<div class="text-center py-8"><p class="text-slate-600">Selecione as opções acima para ver a estimativa</p></div>';
+        const totalValue = resultTotal.querySelector('.total-value');
+        if (totalValue) {
+            totalValue.textContent = 'R$ 0';
+        }
         return;
     }
     
-    // Gerar HTML dos serviços com design melhorado
+    // Gerar HTML dos serviços SEM classes de scale
     let html = '<div class="space-y-2">';
     
     calculatorData.services.forEach(function(service, index) {
         const priceFormatted = `R$ ${service.adjustedPrice.toLocaleString('pt-BR', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
         
         html += `
-            <div class="group flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+            <div class="group flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:shadow-md transition-all duration-300">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
                         ${index + 1}
@@ -477,31 +492,30 @@ function updateResultDisplay() {
     });
     
     html += '</div>';
-    breakdown.innerHTML = html;
+    resultBreakdown.innerHTML = html;
     
-    // Atualizar total
-    const totalValue = total.querySelector('.total-value');
+    // Atualizar total com animação suave
+    const totalValue = resultTotal.querySelector('.total-value');
     if (totalValue) {
-        const formattedTotal = `R$ ${calculatorData.total.toLocaleString('pt-BR', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
-        const itemCount = calculatorData.services.length;
+        const formattedTotal = `R$ ${calculatorData.total.toLocaleString('pt-BR', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        })}`;
         
-        // Animação suave
-        totalValue.style.transition = 'all 0.3s ease';
-        totalValue.style.transform = 'scale(0.95)';
+        // Animação suave apenas com opacidade
+        totalValue.style.transition = 'opacity 0.3s ease';
         totalValue.style.opacity = '0.7';
-        
         setTimeout(() => {
             totalValue.textContent = formattedTotal;
-            totalValue.style.transform = 'scale(1)';
             totalValue.style.opacity = '1';
         }, 150);
     }
     
-    // Mostrar container de resultado mobile se existir
+    // Mostrar container mobile sem transforms problemáticos
     const mobileResult = document.querySelector('.mobile-result-display');
     if (mobileResult && calculatorData.services.length > 0) {
         mobileResult.style.opacity = '1';
-        mobileResult.style.transform = 'translateY(0)';
+        mobileResult.style.visibility = 'visible';
     }
 }
 
@@ -529,7 +543,8 @@ function sendQuote() {
     message += `\n💰 Total estimado: R$ ${calculatorData.total.toLocaleString('pt-BR')}\n\n`;
     message += `Aguardo contato para mais detalhes!`;
     
-    const whatsappUrl = `https://wa.me/5571999195766?text=${encodeURIComponent(message)}`;
+    const subject = encodeURIComponent('Solicitação de Orçamento - NaxelTech');
+    const whatsappUrl = `https://wa.me/5571981525641?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
 
@@ -600,6 +615,50 @@ function resetCalculator() {
 // Tornar funções globais
 window.sendQuote = sendQuote;
 window.resetCalculator = resetCalculator;
+
+// URLs do Formspree
+const FORMSPREE_CONTACT_URL = 'https://formspree.io/f/xrbkknvl';
+const FORMSPREE_NEWSLETTER_URL = 'https://formspree.io/f/mvgrzdek';
+
+// Função para sanitizar inputs (proteção XSS)
+function sanitizeInput(input) {
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+// Função para enviar dados para Formspree
+async function sendToFormspree(url, formData) {
+    // Sanitizar todos os campos de texto
+    const sanitizedData = {};
+    
+    for (const key in formData) {
+        if (typeof formData[key] === 'string') {
+            sanitizedData[key] = sanitizeInput(formData[key]);
+        } else {
+            sanitizedData[key] = formData[key];
+        }
+    }
+    
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sanitizedData)
+        });
+        
+        if (response.ok) {
+            return { success: true };
+        } else {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Erro ao enviar para Formspree:', error);
+        return { success: false, error: error.message };
+    }
+}
 
 console.log('📜 Script carregado!');
 
@@ -999,10 +1058,13 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Inicializar EmailJS
-(function() {
-    emailjs.init("6h4mCYqh1EBWvSnbZ"); // Public Key do EmailJS
-})();
+
+
+// Gerar token CSRF
+function generateCSRFToken() {
+    return Math.random().toString(36).substring(2, 15) + 
+           Math.random().toString(36).substring(2, 15);
+}
 
 // Função para processar o formulário de contato
 function initContactForm() {
@@ -1013,8 +1075,19 @@ function initContactForm() {
         return;
     }
     
-    contactForm.addEventListener('submit', function(e) {
+    // Adicionar token CSRF ao formulário
+    const csrfToken = generateCSRFToken();
+    localStorage.setItem('csrf_token', csrfToken);
+    
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+        
+        // Verificar token CSRF
+        const storedToken = localStorage.getItem('csrf_token');
+        if (!storedToken) {
+            showNotification('⚠️ Erro de segurança. Recarregue a página e tente novamente.', 'error');
+            return;
+        }
         
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -1025,35 +1098,43 @@ function initContactForm() {
         submitButton.style.opacity = '0.7';
         
         // Coletar dados do formulário
-        const templateParams = {
-            from_name: document.getElementById('name').value,
-            from_email: document.getElementById('email').value,
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
             message: document.getElementById('message').value,
-            to_name: 'NexoTech'
+            _subject: 'Novo contato do site NexoTech',
+            csrf_token: storedToken
         };
         
-        // Enviar via EmailJS
-        emailjs.send('service_x4iycxb', 'template_2b12mkm', templateParams)
-            .then(function(response) {
-                console.log('✅ Email enviado com sucesso!', response);
-                
-                // Mostrar mensagem de sucesso
-                showNotification('✅ Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
-                
-                // Limpar formulário
-                contactForm.reset();
-                
-            }, function(error) {
-                console.error('❌ Erro ao enviar email:', error);
-                showNotification('❌ Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.', 'error');
-            })
-            .finally(function() {
-                // Restaurar botão
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                submitButton.style.opacity = '1';
-            });
+        // Validar telefone
+        if (!isValidPhone(formData.phone)) {
+            showNotification('⚠️ Por favor, insira um telefone válido.', 'warning');
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+            submitButton.style.opacity = '1';
+            return;
+        }
+        
+        // Enviar via Formspree
+        const result = await sendToFormspree(FORMSPREE_CONTACT_URL, formData);
+        
+        // Gerar novo token após envio
+        localStorage.setItem('csrf_token', generateCSRFToken());
+        
+        if (result.success) {
+            console.log(' Mensagem enviada com sucesso!');
+            showNotification(' Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+            contactForm.reset();
+        } else {
+            console.error(' Erro ao enviar mensagem:', result.error);
+            showNotification(' Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.', 'error');
+        }
+        
+        // Restaurar botão
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+        submitButton.style.opacity = '1';
     });
 }
 
@@ -1066,35 +1147,70 @@ function showNotification(message, type) {
     }
     
     const notification = document.createElement('div');
-    notification.className = `notification-toast fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 max-w-sm ${
+    notification.className = `notification-toast fixed z-50 transform transition-all duration-300 rounded-lg shadow-lg ${
         type === 'success' 
             ? 'bg-green-500 text-white border-l-4 border-green-700' 
+            : type === 'warning'
+            ? 'bg-yellow-500 text-white border-l-4 border-yellow-700'
             : 'bg-red-500 text-white border-l-4 border-red-700'
     }`;
     
+    // Estilos responsivos via JavaScript
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Mobile: notificação no topo, largura quase total
+        notification.style.cssText = `
+            top: 80px;
+            left: 1rem;
+            right: 1rem;
+            width: calc(100% - 2rem);
+            max-width: none;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+        `;
+    } else {
+        // Desktop: canto superior direito
+        notification.style.cssText = `
+            top: 1rem;
+            right: 1rem;
+            max-width: 400px;
+            padding: 1rem;
+            font-size: 0.875rem;
+        `;
+    }
+    
     notification.innerHTML = `
         <div class="flex items-center">
-            <span class="mr-2 text-lg">${type === 'success' ? '✅' : '❌'}</span>
-            <span class="flex-1 text-sm">${message}</span>
-            <button onclick="this.parentElement.parentElement.remove()" class="ml-3 text-white hover:text-gray-200 text-lg font-bold">
+            <span class="mr-2 text-lg flex-shrink-0">${
+                type === 'success' ? '' : 
+                type === 'warning' ? '' : ''
+            }</span>
+            <span class="flex-1 text-sm leading-tight">${message}</span>
+            <button onclick="this.parentElement.parentElement.remove()" class="ml-3 text-white hover:text-gray-200 text-xl font-bold flex-shrink-0 w-6 h-6 flex items-center justify-center">
                 ×
             </button>
         </div>
     `;
     
     // Iniciar fora da tela
-    notification.style.transform = 'translateX(100%)';
+    if (isMobile) {
+        notification.style.transform = 'translateY(-100%)';
+    } else {
+        notification.style.transform = 'translateX(100%)';
+    }
+    
     document.body.appendChild(notification);
     
     // Animação de entrada
     setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
+        notification.style.transform = isMobile ? 'translateY(0)' : 'translateX(0)';
     }, 100);
     
     // Remover após 5 segundos
     setTimeout(() => {
         if (notification.parentElement) {
-            notification.style.transform = 'translateX(100%)';
+            notification.style.transform = isMobile ? 'translateY(-100%)' : 'translateX(100%)';
             setTimeout(() => {
                 notification.remove();
             }, 300);
@@ -1104,22 +1220,24 @@ function showNotification(message, type) {
 
 // Função para inicializar newsletter
 function initNewsletter() {
-    const newsletterForm = document.querySelector('.border-t.border-slate-700\/50 .flex.flex-col.sm\\:flex-row.gap-3');
-    const emailInput = newsletterForm?.querySelector('input[type="email"]');
-    const subscribeButton = newsletterForm?.querySelector('button');
+    console.log('🔧 Inicializando newsletter...');
+    
+    const newsletterForm = document.querySelector('.newsletter-form');
+    const emailInput = document.getElementById('newsletter-email');
+    const subscribeButton = document.getElementById('newsletter-submit');
     
     if (!newsletterForm || !emailInput || !subscribeButton) {
         console.warn('⚠️ Elementos da newsletter não encontrados');
         return;
     }
     
-    // Adicionar event listener ao botão
-    subscribeButton.addEventListener('click', function(e) {
+    // Event listener para o formulário
+    newsletterForm.addEventListener('submit', function(e) {
         e.preventDefault();
         handleNewsletterSubscription();
     });
     
-    // Adicionar event listener para Enter no campo de email
+    // Event listener para Enter no campo de email
     emailInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -1131,9 +1249,9 @@ function initNewsletter() {
 }
 
 // Função para processar a inscrição na newsletter
-function handleNewsletterSubscription() {
-    const emailInput = document.querySelector('.border-t.border-slate-700\/50 input[type="email"]');
-    const subscribeButton = document.querySelector('.border-t.border-slate-700\/50 button');
+async function handleNewsletterSubscription() {
+    const emailInput = document.getElementById('newsletter-email');
+    const subscribeButton = document.getElementById('newsletter-submit');
     
     if (!emailInput || !subscribeButton) {
         console.error('❌ Elementos da newsletter não encontrados');
@@ -1142,24 +1260,23 @@ function handleNewsletterSubscription() {
     
     const email = emailInput.value.trim();
     
-    // Validação básica de email
     if (!email) {
-        showNotification('❌ Por favor, insira seu email.', 'error');
+        showNotification('⚠️ Por favor, insira seu email.', 'warning');
         emailInput.focus();
         return;
     }
     
     if (!isValidEmail(email)) {
-        showNotification('❌ Por favor, insira um email válido.', 'error');
+        showNotification('⚠️ Por favor, insira um email válido.', 'warning');
         emailInput.focus();
         return;
     }
     
-    // Mostrar loading
+    // Mostrar estado de carregamento
     const originalText = subscribeButton.innerHTML;
     subscribeButton.innerHTML = `
         <span class="flex items-center justify-center">
-            <svg class="animate-spin w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24">
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -1169,41 +1286,44 @@ function handleNewsletterSubscription() {
     subscribeButton.disabled = true;
     subscribeButton.style.opacity = '0.7';
     
-    // Preparar dados para EmailJS
-    const templateParams = {
-        subscriber_email: email,
-        subscriber_name: email.split('@')[0], // Usar parte antes do @ como nome
-        to_name: 'NexoTech',
-        subscription_date: new Date().toLocaleDateString('pt-BR')
+    // Preparar dados para Formspree
+    const formData = {
+        email: email,
+        subscriber_name: email.split('@')[0],
+        subscription_date: new Date().toLocaleDateString('pt-BR'),
+        _subject: 'Nova inscrição na newsletter NexoTech'
     };
     
-    // Enviar via EmailJS - ATUALIZADO COM O TEMPLATE ID CORRETO
-    emailjs.send('service_x4iycxb', 'template_o0u2guc', templateParams)
-        .then(function(response) {
-            console.log('✅ Newsletter subscription enviada!', response);
-            
-            // Mostrar mensagem de sucesso
-            showNotification('🎉 Inscrição realizada com sucesso! Bem-vindo à nossa newsletter técnica.', 'success');
-            
-            // Limpar campo
-            emailInput.value = '';
-            
-        }, function(error) {
-            console.error('❌ Erro ao inscrever na newsletter:', error);
-            showNotification('❌ Erro ao processar inscrição. Tente novamente em alguns instantes.', 'error');
-        })
-        .finally(function() {
-            // Restaurar botão
-            subscribeButton.innerHTML = originalText;
-            subscribeButton.disabled = false;
-            subscribeButton.style.opacity = '1';
-        });
+    // Enviar via Formspree
+    const result = await sendToFormspree(FORMSPREE_NEWSLETTER_URL, formData);
+    
+    if (result.success) {
+        console.log('✅ Newsletter subscription enviada!');
+        emailInput.value = '';
+        showNotification('🎉 Inscrição realizada com sucesso! Bem-vindo à nossa newsletter técnica.', 'success');
+    } else {
+        console.error('❌ Erro ao inscrever na newsletter:', result.error);
+        showNotification('❌ Erro ao processar inscrição. Tente novamente em alguns instantes.', 'error');
+    }
+    
+    // Restaurar botão
+    subscribeButton.innerHTML = originalText;
+    subscribeButton.disabled = false;
+    subscribeButton.style.opacity = '1';
 }
 
-// Função para validar email
+// Função para validar email (mais robusta)
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // Regex mais completa para validação de email
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[ ^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailRegex.test(String(email).toLowerCase());
+}
+
+// Adicionar validação de telefone
+function isValidPhone(phone) {
+    // Aceita formatos: (XX) XXXXX-XXXX ou XX XXXXX-XXXX ou apenas números
+    const phoneRegex = /^(\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$/;
+    return phoneRegex.test(phone);
 }
 
 

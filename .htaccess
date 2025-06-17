@@ -1,0 +1,27 @@
+# Cabeçalhos de segurança
+<IfModule mod_headers.c>
+    # Proteção contra clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Proteção XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Evitar MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Política de segurança de conteúdo
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io;"
+    
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Proteger contra acesso a arquivos sensíveis
+<FilesMatch "(^\.|\.(bak|config|sql|fla|md|psd|ini|log|sh|inc|swp|dist)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# Desabilitar listagem de diretórios
+Options -Indexes

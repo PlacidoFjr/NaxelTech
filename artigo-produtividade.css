@@ -63,11 +63,17 @@ p {
     justify-content: flex-start !important;
 }
 
+/* Classe específica para centralizar a caixa de design - apenas desktop */
+.center-design-box {
+    justify-content: flex-start !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
 .items-center {
     align-items: flex-start !important;
 }
 
-/* REMOVER TODAS as regras .dark - apenas tema claro */
 
 /* Bordas coloridas laterais */
 .border-l-4.border-blue-500 {
@@ -179,11 +185,58 @@ p {
         padding: 1.5rem;
     }
 
+    /* Centralização APENAS para mobile */
+    .center-design-box {
+        justify-content: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .center-design-box > div {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Header mobile fixa */
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+    }
+    
+    body {
+        padding-top: 0 !important;
+    }
+}
+
     /* Navbar mobile fixa */
     /* Adicionar estilos mobile */
     @media (max-width: 768px) {
         body {
             padding-top: 85px !important;
+        }
+        
+        /* Garantir que o header seja sticky */
+        header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+        }
+        
+        /* Mobile responsivo */
+        @media (max-width: 768px) {
+            header {
+                position: sticky !important;
+                top: 0 !important;
+                width: 100% !important;
+                z-index: 1000 !important;
+            }
+            
+            body {
+                padding-top: 0 !important;
+            }
         }
         
         header {
@@ -192,4 +245,3 @@ p {
             opacity: 1 !important;
         }
     }
-}

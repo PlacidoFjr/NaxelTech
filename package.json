@@ -18,6 +18,6 @@
   "homepage": "https://github.com/PlacidoFjr/NexoTech#readme",
   "description": "",
   "devDependencies": {
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.10"
   }
 }
