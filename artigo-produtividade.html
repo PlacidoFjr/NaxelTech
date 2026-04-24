@@ -12,182 +12,99 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile.css">
     <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="artigo-produtividade.css">
-    <script src="script.js" defer></script>
+    <script src="script.js?v=1.2" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800">
-    <header class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+<body class="bg-white text-slate-900">
+    <header class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 border-b border-slate-100">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="logo-animate text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300">Naxel<span class="text-slate-700">Tech</span></a>
-            <div class="hidden md:flex space-x-8">
-                <a href="index.html#desafio" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">O Desafio</a>
-                <a href="index.html#servicos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Nossos Serviços</a>
-                <a href="index.html#beneficios" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Benefícios</a>
-                <a href="index.html#artigos" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Artigos</a>
-                <a href="index.html#contato" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-medium">Contato</a>
+            <div class="flex-1 flex justify-start">
+                <a href="index.html" class="flex items-center gap-3 group whitespace-nowrap">
+                    <img src="Design sem nome.png" alt="Naxel Soluções Tecnológicas" class="h-12 w-12 object-contain group-hover:scale-105 transition-all">
+                    <span class="text-xl font-black tracking-tighter text-slate-900 leading-none uppercase">Naxel Soluções</span>
+                </a>
             </div>
-            <!-- Botão de modo escuro REMOVIDO -->
-            <div class="flex items-center space-x-4">
-                <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
+            <div class="hidden md:flex items-center justify-center gap-8 lg:gap-12 flex-[2]">
+                <a href="index.html#desafio" class="text-slate-600 hover:text-blue-600 transition-all duration-300 font-bold text-xs uppercase tracking-widest nav-item">O Desafio</a>
+                <a href="index.html#servicos" class="text-slate-600 hover:text-blue-600 transition-all duration-300 font-bold text-xs uppercase tracking-widest nav-item">Serviços</a>
+                <a href="index.html#beneficios" class="text-slate-600 hover:text-blue-600 transition-all duration-300 font-bold text-xs uppercase tracking-widest nav-item">Benefícios</a>
+                <a href="index.html#artigos" class="text-slate-600 hover:text-blue-600 transition-all duration-300 font-bold text-xs uppercase tracking-widest nav-item">Artigos</a>
             </div>
+            <div class="flex-1 flex justify-end">
+                <a href="index.html#contato" class="bg-slate-900 text-white px-6 py-2 rounded-sm hover:bg-blue-600 transition-all duration-300 font-bold text-xs uppercase tracking-widest shadow-lg shadow-blue-100">Contato</a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-slate-900 focus:outline-none" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full left-0 top-full z-50">
-            <div class="nav-links flex flex-col p-4 space-y-2">
-                <a href="index.html#desafio" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">O Desafio</a>
-                <a href="index.html#servicos" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Nossos Serviços</a>
-                <a href="index.html#beneficios" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Benefícios</a>
-                <a href="index.html#artigos" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Artigos</a>
-                <a href="index.html#contato" class="block py-3 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">Contato</a>
-            </div>
-        </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
-        <article class="max-w-4xl mx-auto">
-            <div class="mb-12">
-                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Ferramentas de Colaboração que Transformam Equipes</h1>
-                <p class="text-xl text-slate-600 mb-8">Conheça as soluções de software que estão revolucionando a forma como as equipes trabalham juntas, mesmo à distância.</p>
-                <div class="flex items-start space-x-4 text-slate-500">
-                    <span> Publicado em 5 de Julho, 2025</span>
-                    <span> 12 min de leitura</span>
+    <main class="container mx-auto px-6 pt-32 pb-24">
+        <article class="max-w-3xl mx-auto">
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-blue-600 font-bold text-[10px] uppercase tracking-widest border border-blue-200 px-2 py-1">Eficiência</span>
+                    <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">05 de Julho, 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight tracking-tight">Ferramentas de Colaboração que Transformam Equipes</h1>
+                <p class="text-xl text-slate-500 mb-12 leading-relaxed">Conheça as soluções de software que estão revolucionando a forma como as equipes trabalham juntas, mesmo à distância.</p>
+                <div class="relative aspect-[21/9] overflow-hidden mb-16 grayscale">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80" alt="Produtividade" class="w-full h-full object-cover">
                 </div>
             </div>
-        
-            </header>
 
-            <div class="prose prose-lg max-w-none">
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
-                    <p class="text-blue-800 font-medium">🚀 <strong>Resultado:</strong> Equipes que usam ferramentas de colaboração adequadas são 25% mais produtivas e 50% mais engajadas no trabalho.</p>
+            <div class="prose prose-slate max-w-none">
+                <div class="border-l-2 border-blue-600 pl-8 mb-12 italic text-slate-600 text-lg">
+                    "Equipes que usam ferramentas de colaboração adequadas são 25% mais produtivas e 50% mais engajadas no trabalho."
                 </div>
 
-                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">1. Plataformas de Comunicação Unificada</h2>
-                <p class="text-slate-700 mb-6">Centralizar todas as comunicações em uma única plataforma elimina a fragmentação e melhora significativamente a eficiência da equipe.</p>
+                <h2 class="text-2xl font-bold text-slate-900 mt-16 mb-8 uppercase tracking-tight">1. Comunicação Unificada</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">Centralizar todas as comunicações em uma única plataforma elimina a fragmentação e melhora significativamente a eficiência da equipe.</p>
                 
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-white border border-slate-200 rounded-lg p-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-4">Microsoft Teams</h3>
-                        <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm">
-                            <li>Integração completa com Office 365</li>
-                            <li>Videoconferências até 1000 participantes</li>
-                            <li>Compartilhamento de arquivos em tempo real</li>
-                            <li>Aplicativos integrados</li>
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-slate-50 border border-slate-100 p-8">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Microsoft Teams</h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex gap-2 font-bold text-slate-900 tracking-tight">• Integração Office 365</li>
+                            <li class="flex gap-2 font-bold text-slate-900 tracking-tight">• Videoconferências HD</li>
+                            <li class="flex gap-2 font-bold text-slate-900 tracking-tight">• Gestão de Arquivos</li>
                         </ul>
                     </div>
-                    <div class="bg-white border border-slate-200 rounded-lg p-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-4">Slack</h3>
-                        <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm">
-                            <li>Organização por canais temáticos</li>
-                            <li>Integrações com 2000+ aplicativos</li>
-                            <li>Busca avançada em conversas</li>
-                            <li>Automações com workflows</li>
+                    <div class="bg-slate-50 border border-slate-100 p-8">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Slack</h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex gap-2 font-bold text-slate-900 tracking-tight">• Canais Temáticos</li>
+                            <li class="flex gap-2 font-bold text-slate-900 tracking-tight">• 2000+ Integrações</li>
+                            <li class="flex gap-2 font-bold text-slate-900 tracking-tight">• Busca Avançada</li>
                         </ul>
                     </div>
                 </div>
 
-                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">2. Gestão de Projetos e Tarefas</h2>
-                <p class="text-slate-700 mb-6">Ferramentas de gestão de projetos mantêm todos alinhados sobre prazos, responsabilidades e progresso das atividades.</p>
+                <h2 class="text-2xl font-bold text-slate-900 mt-16 mb-8 uppercase tracking-tight">2. Gestão de Projetos</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">Ferramentas de gestão de projetos mantêm todos alinhados sobre prazos, responsabilidades e progresso das atividades.</p>
                 
-                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
-                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Principais soluções:</h3>
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-blue-500 pl-4">
-                            <h4 class="font-semibold text-slate-800">Asana</h4>
-                            <p class="text-slate-600 text-sm">Ideal para equipes criativas. Interface intuitiva com múltiplas visualizações (lista, quadro, timeline).</p>
+                <div class="bg-slate-50 border border-slate-100 p-8 mb-12">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Principais Soluções</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-2">Asana</h4>
+                            <p class="text-slate-500 text-sm">Interface intuitiva com múltiplas visualizações (lista, quadro, timeline).</p>
                         </div>
-                        <div class="border-l-4 border-green-500 pl-4">
-                            <h4 class="font-semibold text-slate-800">Monday.com</h4>
-                            <p class="text-slate-600 text-sm">Altamente customizável. Perfeito para processos complexos e relatórios detalhados.</p>
-                        </div>
-                        <div class="border-l-4 border-purple-500 pl-4">
-                            <h4 class="font-semibold text-slate-800">Trello</h4>
-                            <p class="text-slate-600 text-sm">Simplicidade do método Kanban. Ideal para equipes pequenas e projetos simples.</p>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-2">Monday.com</h4>
+                            <p class="text-slate-500 text-sm">Altamente customizável para processos complexos e relatórios.</p>
                         </div>
                     </div>
                 </div>
 
-                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">3. Armazenamento e Compartilhamento</h2>
-                <p class="text-slate-700 mb-6">O acesso seguro e simultâneo a arquivos é fundamental para a colaboração efetiva, especialmente em trabalho remoto.</p>
-                
-                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
-                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Soluções recomendadas:</h3>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="text-center p-4 border border-slate-100 rounded-lg">
-                            <h4 class="font-semibold text-slate-800 mb-2">Google Workspace</h4>
-                            <p class="text-slate-600 text-sm mb-3">Colaboração em tempo real em documentos</p>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Melhor para startups</span>
-                        </div>
-                        <div class="text-center p-4 border border-slate-100 rounded-lg">
-                            <h4 class="font-semibold text-slate-800 mb-2">Microsoft 365</h4>
-                            <p class="text-slate-600 text-sm mb-3">Integração completa com ferramentas Microsoft</p>
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Melhor para empresas</span>
-                        </div>
-                        <div class="text-center p-4 border border-slate-100 rounded-lg">
-                            <h4 class="font-semibold text-slate-800 mb-2">Dropbox Business</h4>
-                            <p class="text-slate-600 text-sm mb-3">Sincronização avançada e controle de versões</p>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Melhor para criativos</span>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">4. Ferramentas de Design e Criação</h2>
-                <p class="text-slate-700 mb-6">Para equipes que trabalham com conteúdo visual, ferramentas colaborativas de design aceleram significativamente o processo criativo.</p>
-                
-                <div class="grid md:grid-cols-2 gap-4 mb-8 center-design-box">
-                    <div class="bg-white border border-slate-200 rounded-lg p-6 mx-auto">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-4">Plataformas colaborativas:</h3>
-                        <ul class="list-disc list-inside space-y-2 text-slate-700">
-                            <li><strong>Figma:</strong> Design de interfaces com colaboração em tempo real</li>
-                            <li><strong>Canva for Teams:</strong> Criação de materiais de marketing colaborativos</li>
-                            <li><strong>Adobe Creative Cloud:</strong> Suite completa com bibliotecas compartilhadas</li>
-                            <li><strong>Miro:</strong> Quadros colaborativos para brainstorming e workshops</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h2 class="text-3xl font-bold text-slate-900 mt-12 mb-6">5. Automação e Integração</h2>
-                <p class="text-slate-700 mb-6">Conectar diferentes ferramentas através de automações elimina trabalho manual repetitivo e reduz erros.</p>
-                
-                <div class="bg-white border border-slate-200 rounded-lg p-6 mb-8">
-                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Ferramentas de automação:</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-3">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold mt-1">Zapier</span>
-                            <div>
-                                <p class="text-slate-700 text-sm">Conecta mais de 5000 aplicativos. Ideal para automações simples sem código.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-semibold mt-1">Microsoft Power Automate</span>
-                            <div>
-                                <p class="text-slate-700 text-sm">Integração nativa com ecossistema Microsoft. Automações robustas para empresas.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold mt-1">IFTTT</span>
-                            <div>
-                                <p class="text-slate-700 text-sm">Automações simples baseadas em triggers. Perfeito para tarefas básicas.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-orange-50 border-l-4 border-orange-500 p-6 mt-12">
-                    <h3 class="text-xl font-semibold text-orange-800 mb-4">⚡ Dica de Implementação</h3>
-                    <p class="text-orange-700">Implemente uma ferramenta por vez. Dê 2-3 semanas para a equipe se adaptar antes de introduzir a próxima. Mudanças graduais têm maior taxa de adoção.</p>
-                </div>
-
-                <div class="bg-green-50 border border-green-200 rounded-lg p-8 mt-12 text-center">
-                    <h3 class="text-2xl font-bold text-green-800 mb-4">Quer Implementar Essas Ferramentas?</h3>
-                    <p class="text-green-700 mb-6">A NexoTech ajuda na escolha, configuração e treinamento da equipe para máxima produtividade.</p>
-                    <a href="index.html#contato" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 transition-colors duration-300">Agendar Consultoria</a>
+                <div class="mt-24 pt-12 border-t border-slate-100 text-center">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Quer Implementar Estas Ferramentas?</h3>
+                    <p class="text-slate-500 mb-8">A NaxelTech ajuda na escolha, configuração e treinamento da equipe.</p>
+                    <a href="index.html#contato" class="inline-block bg-slate-900 text-white font-bold py-4 px-10 rounded-sm text-[10px] uppercase tracking-widest hover:bg-blue-600 transition-all">Agendar Consultoria</a>
                 </div>
             </div>
         </article>

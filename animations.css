@@ -1,23 +1,13 @@
-/* Animações existentes */
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-    70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease forwards;
-}
+/* 
+  NaxelTech - Minimalist Animations
+  Subtle transitions for a professional feel
+*/
 
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(15px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-on-scroll.is-visible {
@@ -25,106 +15,22 @@
     transform: translateY(0);
 }
 
-.animate-on-scroll.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Animação para a logo */
-@keyframes logoGlow {
-    0% { text-shadow: 0 0 0px rgba(59, 130, 246, 0); }
-    50% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.7); }
-    100% { text-shadow: 0 0 0px rgba(59, 130, 246, 0); }
-}
-
-@keyframes logoScale {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* Remover animação infinita da logo - só animar no hover */
-.logo-animate {
-    display: inline-block;
+/* Link Hover Effect */
+.nav-item {
     position: relative;
-    /* animation: logoGlow 3s infinite; <- REMOVER ESTA LINHA */
-    transition: all 0.3s ease;
 }
 
-/* Manter apenas no hover */
-.logo-animate:hover {
-    /* animation: logoGlow 2s ease-in-out; <- COMENTAR ESTA LINHA */
-    transform-origin: center;
-    letter-spacing: 0.5px;
-}
-
-/* Efeito de destaque para as letras da logo */
-.logo-animate::after {
+.nav-item::after {
     content: '';
     position: absolute;
-    bottom: -3px;
+    bottom: -2px;
     left: 0;
     width: 0;
-    height: 2px;
-    background-color: #3B82F6;
-    transition: width 0.3s ease, transform 0.3s ease;
-}
-
-.logo-animate:hover::after {
-    width: 100%;
-    transform: scaleX(1.05);
-}
-
-/* Animações para a navbar */
-@keyframes navItemSlide {
-    from { transform: translateY(-10px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes navbarShadowPulse {
-    0% { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-    50% { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-    100% { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-}
-
-/* Efeito hover para links da navbar */
-.nav-hover-effect {
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-hover-effect::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: #2563eb; /* blue-600 */
+    height: 1px;
+    background-color: currentColor;
     transition: width 0.3s ease;
 }
 
-.nav-hover-effect:hover::after {
+.nav-item:hover::after {
     width: 100%;
-}
-
-/* Animação para o logo */
-.logo-animate {
-    transition: transform 0.3s ease;
-}
-
-.logo-animate:hover {
-    transform: scale(1.05);
-}
-
-/* Animação para o menu mobile */
-.mobile-menu-slide {
-    transform: translateY(-20px);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.mobile-menu-slide.show {
-    transform: translateY(0);
-    opacity: 1;
 }
