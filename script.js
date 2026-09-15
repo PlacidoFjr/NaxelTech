@@ -1,264 +1,108 @@
-// NaxelTech - Main Script
-// Refined for professional corporate identity
-
-let calculatorData = {
-    setupTotal: 0,
-    monthlyTotal: 0,
-    services: [],
-    employeeMultiplier: 1,
-    complexityMultiplier: 1
-};
-
-function initializeApp() {
-    console.log('🚀 NaxelTech Initialized');
-    initHeaderScrollEffect();
-    initCalculator();
-    initChart();
-    initContactForm();
-    initMobileMenu();
-}
+const NAXEL_WHATSAPP = '5571920043913';
 
 function initMobileMenu() {
-    const btn = document.getElementById('mobile-menu-button');
+    const button = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
-    
-    btn.addEventListener('click', () => {
+    if (!button || !menu) return;
+
+    const closeMenu = () => {
+        menu.classList.add('hidden');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Abrir menu');
+    };
+
+    button.addEventListener('click', () => {
+        const willOpen = menu.classList.contains('hidden');
         menu.classList.toggle('hidden');
+        button.setAttribute('aria-expanded', String(willOpen));
+        button.setAttribute('aria-label', willOpen ? 'Fechar menu' : 'Abrir menu');
     });
-    
-    menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => menu.classList.add('hidden'));
-    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 }
 
-function initHeaderScrollEffect() {
-    const header = document.querySelector('header');
+function initHeader() {
+    const header = document.getElementById('site-header');
     if (!header) return;
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            header.classList.add('bg-white/95', 'shadow-sm');
-            header.classList.remove('bg-white/80');
-        } else {
-            header.classList.remove('bg-white/95', 'shadow-sm');
-            header.classList.add('bg-white/80');
+    const update = () => header.classList.toggle('is-scrolled', window.scrollY > 16);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+}
+
+function initDiagnosticForm() {
+    const form = document.getElementById('diagnostic-form');
+    const feedback = document.getElementById('diagnostic-feedback');
+    if (!form || !feedback) return;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const services = data.getAll('service');
+        if (!services.length) {
+            feedback.textContent = 'Selecione pelo menos uma área para iniciar a conversa.';
+            feedback.className = 'form-feedback is-error';
+            form.querySelector('input[name="service"]')?.focus();
+            return;
         }
-    });
-}
 
-function initCalculator() {
-    const form = document.getElementById('calculator-form');
-    if (!form) return;
-
-    form.querySelectorAll('input').forEach(input => {
-        input.addEventListener('change', updateCalculation);
-    });
-    updateCalculation();
-}
-
-function updateCalculation() {
-    calculatorData.setupTotal = 0;
-    calculatorData.monthlyTotal = 0;
-    calculatorData.services = [];
-
-    const empInput = document.querySelector('input[name="employees"]:checked');
-    calculatorData.employeeMultiplier = empInput ? parseFloat(empInput.dataset.multiplier) : 1;
-
-    const actInput = document.querySelector('input[name="activity"]:checked');
-    calculatorData.complexityMultiplier = actInput ? parseFloat(actInput.dataset.complexity) : 1;
-
-    document.querySelectorAll('input[name="services"]:checked').forEach(input => {
-        const basePrice = parseFloat(input.dataset.price);
-        const isMonthly = input.value === 'suporte';
-        const labelElement = input.closest('label').querySelector('.option-content span');
-        const label = labelElement ? labelElement.textContent : input.value;
-        
-        let multiplier = calculatorData.employeeMultiplier;
-        if (input.value === 'analise') multiplier = 1 + (multiplier - 1) * 0.3;
-
-        const adjustedPrice = basePrice * multiplier * calculatorData.complexityMultiplier;
-
-        if (isMonthly) calculatorData.monthlyTotal += adjustedPrice;
-        else calculatorData.setupTotal += adjustedPrice;
-
-        calculatorData.services.push({ label, adjustedPrice, isMonthly });
+        feedback.textContent = '';
+        feedback.className = 'form-feedback';
+        const company = String(data.get('company') || '').trim() || 'Não informado';
+        const priority = String(data.get('priority') || 'Quero planejar');
+        const need = String(data.get('need') || '').trim() || 'Prefiro explicar durante a conversa.';
+        const message = [
+            'Olá, NaxelTech! Gostaria de solicitar um diagnóstico.',
+            '',
+            `Empresa: ${company}`,
+            `Interesse: ${services.join(', ')}`,
+            `Prioridade: ${priority}`,
+            `Necessidade: ${need}`
+        ].join('\n');
+        window.open(`https://wa.me/${NAXEL_WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
     });
 
-    updateResultDisplay();
-}
-
-function updateResultDisplay() {
-    const breakdown = document.getElementById('result-breakdown');
-    const total = document.getElementById('result-total');
-    if (!breakdown || !total) return;
-
-    if (calculatorData.services.length === 0) {
-        breakdown.innerHTML = '<p class="text-[10px] text-slate-500 uppercase font-extrabold tracking-widest leading-loose">Selecione os serviços para gerar a estimativa técnica.</p>';
-        total.classList.add('hidden');
-        return;
-    }
-
-    let html = '<div class="space-y-6">';
-    const setup = calculatorData.services.filter(s => !s.isMonthly);
-    const monthly = calculatorData.services.filter(s => s.isMonthly);
-
-    if (setup.length > 0) {
-        html += '<div><div class="text-[9px] font-black uppercase text-slate-900 tracking-[0.2em] mb-3">Setup Inicial</div>';
-        setup.forEach(s => {
-            html += `<div class="flex justify-between items-center py-2 border-b border-slate-50">
-                <span class="text-[10px] font-extrabold uppercase tracking-tight text-slate-700">${s.label}</span>
-                <span class="text-[11px] font-black text-slate-900">R$ ${s.adjustedPrice.toLocaleString('pt-BR')}</span>
-            </div>`;
-        });
-        html += '</div>';
-    }
-
-    if (monthly.length > 0) {
-        html += '<div><div class="text-[9px] font-black uppercase text-blue-600 tracking-[0.2em] mb-3">Suporte Mensal</div>';
-        monthly.forEach(s => {
-            html += `<div class="flex justify-between items-center py-2 border-b border-slate-50">
-                <span class="text-[10px] font-extrabold uppercase tracking-tight text-slate-700">${s.label}</span>
-                <span class="text-[11px] font-black text-blue-600">R$ ${s.adjustedPrice.toLocaleString('pt-BR')}</span>
-            </div>`;
-        });
-        html += '</div>';
-    }
-    html += '</div>';
-    breakdown.innerHTML = html;
-
-    let totalHtml = '<div class="space-y-4">';
-    if (calculatorData.setupTotal > 0) {
-        totalHtml += `<div class="flex justify-between items-end"><span class="text-[10px] font-black uppercase text-slate-900 tracking-widest">Investimento Total</span><span class="text-3xl font-black tracking-tighter text-slate-900">R$ ${calculatorData.setupTotal.toLocaleString('pt-BR')}</span></div>`;
-    }
-    if (calculatorData.monthlyTotal > 0) {
-        totalHtml += `<div class="flex justify-between items-end"><span class="text-[10px] font-black uppercase text-blue-600 tracking-widest">Mensalidade</span><span class="text-3xl font-black tracking-tighter text-blue-600">R$ ${calculatorData.monthlyTotal.toLocaleString('pt-BR')}</span></div>`;
-    }
-    totalHtml += '</div>';
-    
-    total.innerHTML = totalHtml;
-    total.classList.remove('hidden');
-}
-
-function sendQuote() {
-    if (calculatorData.services.length === 0) {
-        alert('Selecione os serviços desejados.');
-        return;
-    }
-    const emp = document.querySelector('input[name="employees"]:checked')?.value || 'N/A';
-    const act = document.querySelector('input[name="activity"]:checked')?.value || 'N/A';
-    let msg = `SOLICITAÇÃO DE PROPOSTA - NAXELTECH\n\nTIME: ${emp}\nSETOR: ${act}\n\nSERVIÇOS:\n`;
-    calculatorData.services.forEach(s => msg += `- ${s.label.toUpperCase()}\n`);
-    msg += `\nINVESTIMENTO: R$ ${calculatorData.setupTotal.toLocaleString('pt-BR')}\nMENSALIDADE: R$ ${calculatorData.monthlyTotal.toLocaleString('pt-BR')}`;
-    window.open(`https://wa.me/5571920043913?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function resetCalculator() {
-    const form = document.getElementById('calculator-form');
-    if (form) {
-        form.reset();
-        updateCalculation();
-    }
-}
-
-function initChart() {
-    const ctx = document.getElementById('challenges-chart');
-    if (!ctx || typeof Chart === 'undefined') return;
-
-    if (window.challengesChart) window.challengesChart.destroy();
-
-    window.challengesChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['HARDWARE', 'CONECTIVIDADE', 'SEGURANÇA', 'BACKUP', 'ESCALABILIDADE'],
-            datasets: [{
-                data: [85, 75, 95, 80, 85],
-                backgroundColor: '#3b82f6',
-                hoverBackgroundColor: '#60a5fa',
-                barThickness: 12,
-                borderRadius: 2
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    backgroundColor: '#1e293b',
-                    titleFont: { size: 11, family: 'Inter', weight: 'bold' },
-                    bodyFont: { size: 11, family: 'Inter' },
-                    padding: 12,
-                    displayColors: false,
-                    callbacks: {
-                        label: function(context) {
-                            return `Impacto: ${context.raw}%`;
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    max: 100,
-                    grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-                    ticks: {
-                        font: { size: 10, weight: 'bold', family: 'Inter' },
-                        color: '#94a3b8',
-                        stepSize: 25
-                    }
-                },
-                y: {
-                    grid: { display: false, drawBorder: false },
-                    ticks: {
-                        font: { size: 10, weight: '800', family: 'Inter' },
-                        color: '#ffffff'
-                    }
-                }
-            },
-            animation: {
-                duration: 2000,
-                easing: 'easeOutQuart'
-            }
-        }
-    });
+    form.querySelectorAll('input[name="service"]').forEach((input) => input.addEventListener('change', () => {
+        feedback.textContent = '';
+        feedback.className = 'form-feedback';
+    }));
 }
 
 function initContactForm() {
     const form = document.getElementById('contact-form');
-    if (!form) return;
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = form.querySelector('button');
-        btn.textContent = 'ENVIANDO...';
-        btn.disabled = true;
-        
-        const data = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject')?.value || 'CONTATO GERAL',
-            message: document.getElementById('message').value
-        };
+    const feedback = document.getElementById('contact-feedback');
+    if (!form || !feedback) return;
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        const data = Object.fromEntries(new FormData(form).entries());
+        button.disabled = true;
+        button.textContent = 'Enviando...';
+        feedback.textContent = '';
+        feedback.className = 'form-feedback';
 
         try {
-            const res = await fetch('https://formspree.io/f/xrbkknvl', {
+            const response = await fetch('https://formspree.io/f/xrbkknvl', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...data,
-                    _subject: `NOVO CONTATO: ${data.subject.toUpperCase()}`
-                })
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({ ...data, _subject: `Novo contato NaxelTech: ${data.subject}` })
             });
-            if (res.ok) {
-                alert('MENSAGEM ENVIADA!');
-                form.reset();
-            }
-        } catch (err) {
-            alert('ERRO AO ENVIAR.');
+            if (!response.ok) throw new Error('Falha no envio');
+            form.reset();
+            feedback.textContent = 'Mensagem enviada. Em breve entraremos em contato.';
+            feedback.classList.add('is-success');
+        } catch (error) {
+            feedback.innerHTML = `Não foi possível enviar agora. Fale conosco pelo <a href="https://wa.me/${NAXEL_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>.`;
+            feedback.classList.add('is-error');
         } finally {
-            btn.textContent = 'ENVIAR MENSAGEM';
-            btn.disabled = false;
+            button.disabled = false;
+            button.textContent = 'Enviar mensagem';
         }
     });
 }
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    initHeader();
+    initDiagnosticForm();
+    initContactForm();
+});

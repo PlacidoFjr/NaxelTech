@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dev-server.js",
+    "test": "node --check script.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PlacidoFjr/NaxelTech.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "NaxelTech",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PlacidoFjr/NaxelTech/issues"
   },
   "homepage": "https://github.com/PlacidoFjr/NaxelTech#readme",
-  "description": "",
+  "description": "Site institucional da NaxelTech.",
   "devDependencies": {
     "tailwindcss": "^4.1.10"
   }

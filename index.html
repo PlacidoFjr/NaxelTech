@@ -3,537 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NaxelTech soluções tecnológicas oferecem consultoria, infraestrutura e suporte para o sucesso do seu negócio.">
-    <meta name="keywords" content="consultoria TI, infraestrutura tecnológica, escritórios, análise de necessidades, equipamentos, suporte técnico">
-    <meta name="author" content="NaxelTech soluções tecnológicas">
+    <title>NaxelTech | Sites, automações, suporte e infraestrutura de TI</title>
+    <meta name="description" content="Tecnologia sob medida para pequenas empresas: sites, automações, suporte técnico e infraestrutura de TI em Salvador e atendimento remoto.">
+    <meta name="author" content="NaxelTech">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://naxel-tech.vercel.app/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nexotech.com.br">
-    <meta property="og:image" content="/images/og-image.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="NaxelTech">
+    <meta property="og:url" content="https://naxel-tech.vercel.app/">
+    <meta property="og:title" content="NaxelTech | Tecnologia sob medida para o seu negócio">
+    <meta property="og:description" content="Sites, automações, suporte e infraestrutura de TI para pequenas empresas.">
+    <meta property="og:image" content="https://naxel-tech.vercel.app/assets/brand/naxeltech-logo-atualizada.jpeg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="NaxelTech soluções tecnológicas: TI Estratégica para Novos Escritórios">
-    <meta property="og:description" content="Soluções de TI personalizadas para o sucesso do seu novo escritório.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://naxeltech.com.br">
-    <meta property="og:image" content="https://naxeltech.com.br/images/og-image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="NaxelTech soluções tecnológicas: TI Estratégica para Novos Escritórios">
-    <meta property="twitter:description" content="Soluções de TI personalizadas para o sucesso do seu novo escritório.">
-    <meta property="twitter:image" content="https://naxeltech.com.br/images/og-image.jpg">
-   
-    <script src="https://cdn.tailwindcss.com" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" ></script>
-    <script src="calculator.js" defer></script>
-    <script src="animations.js" defer></script>
+    <meta name="twitter:title" content="NaxelTech | Tecnologia sob medida para o seu negócio">
+    <meta name="twitter:description" content="Sites, automações, suporte e infraestrutura de TI para pequenas empresas.">
+    <meta name="twitter:image" content="https://naxel-tech.vercel.app/assets/brand/naxeltech-logo-atualizada.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js" defer></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="animations.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "NaxelTech",
+      "url": "https://naxel-tech.vercel.app/",
+      "email": "naxeltecnologias@gmail.com",
+      "telephone": "+55 71 92004-3913",
+      "areaServed": ["Salvador", "Bahia", "Brasil"],
+      "description": "Sites, automações, suporte técnico e infraestrutura de TI para pequenas empresas."
+    }
+    </script>
 </head>
-<body class="bg-white text-slate-900 pt-20">
-    
-    <header class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 w-full z-50 border-b border-slate-100">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo (Left) -->
-            <div class="flex-1 flex justify-start">
-                <a href="index.html" class="flex items-center gap-3 group whitespace-nowrap">
-                    <img src="Design sem nome.png" alt="Naxel Soluções Tecnológicas" class="h-14 w-14 object-contain group-hover:scale-105 transition-all">
-                    <span class="text-xl font-black tracking-tighter text-slate-900 leading-none uppercase">Naxel Soluções</span>
-                </a>
+<body class="bg-white text-slate-950">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header id="site-header" class="site-header fixed inset-x-0 top-0 z-50">
+        <nav class="container mx-auto flex items-center justify-between px-6 py-4" aria-label="Navegação principal">
+            <a href="#inicio" class="brand" aria-label="NaxelTech — início"><span class="brand-logo-crop"><img src="assets/brand/naxeltech-logo-atualizada.jpeg" alt=""></span><span class="brand-name">Naxel<span>Tech</span></span></a>
+            <div class="hidden items-center gap-8 lg:flex">
+                <a class="nav-link" href="#solucoes">Soluções</a><a class="nav-link" href="#processo">Como trabalhamos</a><a class="nav-link" href="#conteudos">Conteúdos</a><a class="nav-link" href="#sobre">Sobre</a>
             </div>
-            
-            <!-- Nav Links (Center) -->
-            <div class="hidden md:flex items-center justify-center gap-8 lg:gap-12 flex-[2]">
-                <a href="#desafio" class="text-xs font-bold uppercase tracking-[0.2em] text-slate-600 hover:text-slate-900 transition-colors">O Desafio</a>
-                <a href="#servicos" class="text-xs font-bold uppercase tracking-[0.2em] text-slate-600 hover:text-slate-900 transition-colors">Serviços</a>
-                <a href="#beneficios" class="text-xs font-bold uppercase tracking-[0.2em] text-slate-600 hover:text-slate-900 transition-colors">Benefícios</a>
-                <a href="#artigos" class="text-xs font-bold uppercase tracking-[0.2em] text-slate-600 hover:text-slate-900 transition-colors">Artigos</a>
-            </div>
-            
-            <!-- Contact (Right) -->
-            <div class="flex-1 flex justify-end items-center gap-6">
-                <a href="#contato" class="hidden sm:inline-block bg-slate-900 text-white text-[9px] font-black uppercase tracking-[0.2em] px-8 py-4 hover:bg-blue-600 transition-all">Contato</a>
-                
-                <button id="mobile-menu-button" class="md:hidden p-2 text-slate-900 hover:text-blue-600 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+            <div class="flex items-center gap-3">
+                <a href="#diagnostico" class="button button-dark hidden sm:inline-flex">Solicitar diagnóstico</a>
+                <button id="mobile-menu-button" class="menu-button lg:hidden" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button>
             </div>
         </nav>
-        
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 absolute w-full left-0">
-            <div class="flex flex-col p-6 gap-4">
-                <a href="#desafio" class="text-xs font-bold uppercase tracking-widest text-slate-600">O Desafio</a>
-                <a href="#servicos" class="text-xs font-bold uppercase tracking-widest text-slate-600">Serviços</a>
-                <a href="#beneficios" class="text-xs font-bold uppercase tracking-widest text-slate-600">Benefícios</a>
-                <a href="#artigos" class="text-xs font-bold uppercase tracking-widest text-slate-600">Artigos</a>
-                <a href="#contato" class="text-xs font-bold uppercase tracking-widest text-slate-900">Contato</a>
-            </div>
-        </div>
+        <div id="mobile-menu" class="mobile-menu hidden lg:hidden"><a href="#solucoes">Soluções</a><a href="#processo">Como trabalhamos</a><a href="#conteudos">Conteúdos</a><a href="#sobre">Sobre</a><a href="#diagnostico">Solicitar diagnóstico</a></div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="relative pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden">
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-4xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full mb-8">
-                        <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Disponível para novos projetos</span>
-                    </div>
-                    <h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-10 text-slate-900">
-                        INFRAESTRUTURA DE TI <br>
-                        <span class="text-slate-400">PARA NOVOS ESCRITÓRIOS.</span>
-                    </h1>
-                    <p class="text-lg md:text-xl text-slate-600 max-w-2xl mb-12 leading-relaxed font-medium">
-                        Consultoria estratégica para empresas que buscam alta performance desde o primeiro dia. Projetamos, implementamos e gerenciamos sua tecnologia.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#servicos" class="bg-slate-900 text-white text-[11px] font-bold uppercase tracking-widest px-10 py-5 hover:bg-blue-600 transition-all">Explorar Soluções</a>
-                        <a href="#contato" class="border border-slate-200 text-slate-900 text-[11px] font-bold uppercase tracking-widest px-10 py-5 hover:bg-slate-50 transition-all">Agendar Reunião</a>
-                    </div>
+    <main id="conteudo">
+        <section id="inicio" class="hero">
+            <div class="hero-grid container mx-auto px-6">
+                <div class="hero-copy">
+                    <div class="eyebrow"><span></span> Salvador e atendimento remoto</div>
+                    <h1>Tecnologia sob medida para <em>seu negócio funcionar melhor.</em></h1>
+                    <p>Sites, automações, suporte e infraestrutura de TI para pequenas empresas que precisam crescer com organização, segurança e eficiência.</p>
+                    <div class="hero-actions"><a href="#diagnostico" class="button button-blue">Solicitar diagnóstico</a><a href="#solucoes" class="button button-light">Conhecer soluções</a></div>
                 </div>
-            </div>
-            <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-50 -z-10 hidden lg:block"></div>
-        </section>
-
-        <!-- Desafio Section -->
-        <section id="desafio" class="py-24 border-t border-slate-100">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                    <div class="max-w-2xl">
-                        <h2 class="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Análise de Risco</h2>
-                        <h3 class="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
-                            OS CUSTOS INVISÍVEIS DA <br> NEGLIGÊNCIA TECNOLÓGICA.
-                        </h3>
+                <div class="hero-panel" aria-label="Áreas de atuação da NaxelTech">
+                    <div class="hero-panel-top"><span>Soluções conectadas</span><span class="status-dot">Em operação</span></div>
+                    <div class="solution-stack">
+                        <div class="solution-row"><span class="solution-number">01</span><div><strong>Presença digital</strong><small>Sites, landing pages e lojas virtuais</small></div><span class="solution-icon">↗</span></div>
+                        <div class="solution-row"><span class="solution-number">02</span><div><strong>Processos eficientes</strong><small>Automações, integrações e painéis</small></div><span class="solution-icon">↗</span></div>
+                        <div class="solution-row"><span class="solution-number">03</span><div><strong>Operação confiável</strong><small>Suporte, redes, equipamentos e backup</small></div><span class="solution-icon">↗</span></div>
                     </div>
-                    <div class="max-w-md">
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            Muitas empresas falham ao subestimar a base tecnológica. Identificamos e mitigamos os riscos antes que eles paralisem sua operação.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-100 border border-slate-100">
-                    <div class="bg-white p-10 hover:bg-slate-50 transition-colors group">
-                        <div class="text-slate-300 font-black text-5xl mb-8 group-hover:text-blue-600 transition-colors">01</div>
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-4">Aquisições Erradas</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed">Equipamentos subdimensionados ou excessivamente caros que não atendem à demanda real.</p>
-                    </div>
-                    <div class="bg-white p-10 hover:bg-slate-50 transition-colors group">
-                        <div class="text-slate-300 font-black text-5xl mb-8 group-hover:text-blue-600 transition-colors">02</div>
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-4">Rede Instável</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed">Conectividade lenta e falhas de Wi-Fi que interrompem o fluxo de trabalho diário.</p>
-                    </div>
-                    <div class="bg-white p-10 hover:bg-slate-50 transition-colors group">
-                        <div class="text-slate-300 font-black text-5xl mb-8 group-hover:text-blue-600 transition-colors">03</div>
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-4">Vulnerabilidade</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed">Exposição a ciberataques e perda de dados por falta de protocolos de segurança.</p>
-                    </div>
-                    <div class="bg-white p-10 hover:bg-slate-50 transition-colors group">
-                        <div class="text-slate-300 font-black text-5xl mb-8 group-hover:text-blue-600 transition-colors">04</div>
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-4">Incompatibilidade</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed">Sistemas que não se integram, gerando gargalos e ineficiência operacional.</p>
-                    </div>
+                    <div class="hero-panel-footer">Uma única parceira para organizar sua tecnologia.</div>
                 </div>
             </div>
         </section>
 
-        <!-- Serviços Section -->
-        <section id="servicos" class="py-24 border-t border-slate-100">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                    <div class="max-w-2xl">
-                        <h2 class="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Soluções 360º</h2>
-                        <h3 class="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
-                            ESPECIALISTAS EM <br> INFRAESTRUTURA TÉCNICA.
-                        </h3>
-                    </div>
-                </div>
+        <section class="context-strip" aria-label="Posicionamento">
+            <div class="container mx-auto grid gap-8 px-6 md:grid-cols-3">
+                <p><strong>Para pequenas empresas</strong><span>Soluções proporcionais à sua realidade e ao momento do negócio.</span></p>
+                <p><strong>Do diagnóstico à entrega</strong><span>Planejamento claro, implementação organizada e acompanhamento.</span></p>
+                <p><strong>Presencial e remoto</strong><span>Atendimento em Salvador e suporte remoto para outras localidades.</span></p>
+            </div>
+        </section>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-100 border border-slate-100">
-                    <div class="bg-white p-12 hover:bg-slate-50 transition-all group">
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-slate-400 group-hover:text-blue-600 transition-colors">01. Análise</h4>
-                        <h5 class="text-xl font-bold mb-4">Mapeamento de Necessidades</h5>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">Levantamento rigoroso de requisitos de hardware e software para dimensionamento preciso.</p>
-                        <div class="w-8 h-px bg-slate-200 group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                    <div class="bg-white p-12 hover:bg-slate-50 transition-all group">
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-slate-400 group-hover:text-blue-600 transition-colors">02. Hardware</h4>
-                        <h5 class="text-xl font-bold mb-4">Curadoria de Equipamentos</h5>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">Seleção de ativos de rede e estações de trabalho focada em longevidade e performance.</p>
-                        <div class="w-8 h-px bg-slate-200 group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                    <div class="bg-white p-12 hover:bg-slate-50 transition-all group">
-                        <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-slate-400 group-hover:text-blue-600 transition-colors">03. Rede</h4>
-                        <h5 class="text-xl font-bold mb-4">Projeto de Conectividade</h5>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">Arquitetura de rede Wi-Fi e cabeamento estruturado para ambientes corporativos.</p>
-                        <div class="w-8 h-px bg-slate-200 group-hover:w-full transition-all duration-500"></div>
-                    </div>
+        <section id="solucoes" class="section section-light">
+            <div class="container mx-auto px-6">
+                <div class="section-heading"><div><span class="section-kicker">Soluções</span><h2>Tecnologia que resolve o que trava sua operação.</h2></div><p>Começamos pela necessidade do negócio. Depois definimos a combinação certa de desenvolvimento, automação, suporte e infraestrutura.</p></div>
+                <div class="services-grid">
+                    <article class="service-card service-card-featured"><span class="service-index">01</span><div class="service-icon" aria-hidden="true">⌘</div><h3>Sites e experiências digitais</h3><p>Sites institucionais, landing pages, portfólios e lojas virtuais com boa apresentação, navegação responsiva e foco em conversão.</p><ul><li>Painel administrativo</li><li>Integração com WhatsApp</li><li>SEO técnico essencial</li></ul></article>
+                    <article class="service-card"><span class="service-index">02</span><div class="service-icon" aria-hidden="true">↻</div><h3>Automações e integrações</h3><p>Automação de tarefas repetitivas, organização de contatos e conexão entre ferramentas para reduzir retrabalho.</p><ul><li>Fluxos de atendimento</li><li>Leads e acompanhamento</li><li>Integrações sob medida</li></ul></article>
+                    <article class="service-card"><span class="service-index">03</span><div class="service-icon" aria-hidden="true">◉</div><h3>Suporte técnico empresarial</h3><p>Atendimento remoto ou presencial para manter computadores, sistemas e usuários trabalhando com menos interrupções.</p><ul><li>Chamados e diagnóstico</li><li>Manutenção preventiva</li><li>Planos recorrentes</li></ul></article>
+                    <article class="service-card"><span class="service-index">04</span><div class="service-icon" aria-hidden="true">⌁</div><h3>Infraestrutura e redes</h3><p>Planejamento e organização de redes, Wi‑Fi, computadores, impressoras e rotinas de backup para ambientes de trabalho.</p><ul><li>Mapeamento do ambiente</li><li>Configuração de rede</li><li>Backup e continuidade</li></ul></article>
+                    <article class="service-card service-card-wide"><span class="service-index">05</span><div><div class="service-icon" aria-hidden="true">▦</div><h3>Painéis e sistemas sob medida</h3></div><div><p>Ferramentas internas para centralizar informações, acompanhar atividades e dar mais visibilidade aos processos do negócio.</p><a href="#contato">Conversar sobre uma necessidade específica <span>→</span></a></div></article>
                 </div>
             </div>
         </section>
 
-        <!-- Benefícios Section -->
-        <section id="beneficios" class="py-24 bg-slate-900 text-white overflow-hidden">
+        <section id="processo" class="section section-dark">
             <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div>
-                        <h2 class="text-sm font-bold text-blue-400 uppercase tracking-[0.2em] mb-4">Vantagem Competitiva</h2>
-                        <h3 class="text-4xl md:text-6xl font-black tracking-tighter mb-10 leading-[1.1] text-white">
-                            TECNOLOGIA QUE <br> 
-                            IMPULSIONA O <br> 
-                            SEU NEGÓCIO.
-                        </h3>
-                        <div class="space-y-8">
-                            <div class="flex gap-6">
-                                <div class="w-px h-12 bg-blue-500"></div>
-                                <div>
-                                    <h4 class="text-xs font-bold uppercase tracking-widest mb-2 text-white">Zero Downtime</h4>
-                                    <p class="text-slate-100 text-xs leading-relaxed max-w-sm font-medium">Sistemas projetados para continuidade, eliminando paradas operacionais.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-6">
-                                <div class="w-px h-12 bg-blue-600"></div>
-                                <div>
-                                    <h4 class="text-xs font-bold uppercase tracking-widest mb-2 text-white">Segurança Nativa</h4>
-                                    <p class="text-slate-100 text-xs leading-relaxed max-w-sm font-medium">Proteção de dados integrada desde a concepção do projeto.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-6">
-                                <div class="w-px h-12 bg-blue-600"></div>
-                                <div>
-                                    <h4 class="text-xs font-bold uppercase tracking-widest mb-2 text-white">Foco Total</h4>
-                                    <p class="text-slate-100 text-xs leading-relaxed max-w-sm font-medium">Sua equipe foca no core business enquanto cuidamos da infraestrutura.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="bg-slate-800/80 p-10 border border-slate-700 backdrop-blur-md">
-                            <h4 class="text-[12px] font-black uppercase tracking-[0.2em] text-blue-400 mb-8">Métricas de Impacto</h4>
-                            <div class="h-64 relative">
-                                <canvas id="challenges-chart"></canvas>
-                            </div>
-                            <p class="mt-8 text-[10px] text-white font-bold uppercase leading-loose tracking-widest border-t border-slate-700 pt-6">
-                                * Dados de performance após implementação NaxelTech.
-                            </p>
-                        </div>
-                    </div>
+                <div class="section-heading section-heading-dark"><div><span class="section-kicker">Como trabalhamos</span><h2>Um processo claro, sem complicar o que precisa ser simples.</h2></div><p>Cada projeto começa com entendimento. Escopo, prioridades e próximos passos ficam visíveis desde o início.</p></div>
+                <div class="process-grid">
+                    <article><span>01</span><h3>Diagnóstico</h3><p>Entendemos o cenário atual, os gargalos e o resultado que você precisa alcançar.</p></article>
+                    <article><span>02</span><h3>Plano de solução</h3><p>Definimos escopo, prioridades, prazos e investimento de acordo com a necessidade.</p></article>
+                    <article><span>03</span><h3>Implementação</h3><p>Executamos por etapas, com comunicação direta e validações durante a entrega.</p></article>
+                    <article><span>04</span><h3>Acompanhamento</h3><p>Orientamos o uso da solução e oferecemos suporte quando o projeto exigir continuidade.</p></article>
                 </div>
             </div>
         </section>
 
-        <!-- Calculadora Section -->
-        <section id="calculadora" class="py-24 bg-white">
+        <section id="diagnostico" class="section section-diagnostic">
             <div class="container mx-auto px-6">
-                <div class="mb-20">
-                    <h2 class="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Simulador de Investimento</h2>
-                    <h3 class="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
-                        PLANEJE SUA ESTRUTURA.
-                    </h3>
-                </div>
-
-                <div class="grid lg:grid-cols-3 gap-16 items-start">
-                    <form id="calculator-form" class="lg:col-span-2 space-y-12">
-                        <!-- Número de Funcionários -->
-                        <div>
-                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">01. Tamanho do Time</h4>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <label class="radio-option">
-                                    <input type="radio" name="employees" value="1-5" data-multiplier="1" checked>
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">1-5</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="employees" value="6-15" data-multiplier="1.5">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">6-15</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="employees" value="16-30" data-multiplier="2">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">16-30</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="employees" value="30+" data-multiplier="3">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">30+</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Setor -->
-                        <div>
-                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">02. Setor de Atuação</h4>
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <label class="radio-option">
-                                    <input type="radio" name="activity" value="consultoria" data-complexity="1" checked>
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">Consultoria</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="activity" value="advocacia" data-complexity="1.2">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">Advocacia</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="activity" value="arquitetura" data-complexity="1.3">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">Arquitetura</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="activity" value="contabilidade" data-complexity="1.1">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">Contabilidade</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="activity" value="medicina" data-complexity="1.4">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">Medicina</span>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="activity" value="engenharia" data-complexity="1.3">
-                                    <div class="option-content">
-                                        <span class="block text-xs font-bold uppercase text-center">Engenharia</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Serviços -->
-                        <div>
-                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">03. Serviços Necessários</h4>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="services" value="analise" data-price="1500">
-                                    <div class="option-content flex justify-between items-center">
-                                        <div>
-                                            <span class="block text-xs font-bold uppercase">Análise Estratégica</span>
-                                            <span class="text-[10px] text-slate-400 uppercase">Setup único</span>
-                                        </div>
-                                        <span class="text-xs font-bold">R$ 1.500</span>
-                                    </div>
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="services" value="infraestrutura" data-price="3500">
-                                    <div class="option-content flex justify-between items-center">
-                                        <div>
-                                            <span class="block text-xs font-bold uppercase">Projeto de Rede</span>
-                                            <span class="text-[10px] text-slate-400 uppercase">Setup único</span>
-                                        </div>
-                                        <span class="text-xs font-bold">R$ 3.500</span>
-                                    </div>
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="services" value="equipamentos" data-price="2000">
-                                    <div class="option-content flex justify-between items-center">
-                                        <div>
-                                            <span class="block text-xs font-bold uppercase">Consultoria de Hardware</span>
-                                            <span class="text-[10px] text-slate-400 uppercase">Setup único</span>
-                                        </div>
-                                        <span class="text-xs font-bold">R$ 2.000</span>
-                                    </div>
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="services" value="suporte" data-price="500">
-                                    <div class="option-content flex justify-between items-center border-blue-100">
-                                        <div>
-                                            <span class="block text-xs font-bold uppercase">Suporte Gerenciado</span>
-                                            <span class="text-[10px] text-blue-600 uppercase">Mensal</span>
-                                        </div>
-                                        <span class="text-xs font-bold text-blue-600">R$ 500/mês</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                <div class="diagnostic-grid">
+                    <div class="diagnostic-copy"><span class="section-kicker">Diagnóstico inicial</span><h2>Conte rapidamente o que sua empresa precisa.</h2><p>Selecione as áreas de interesse e gere uma mensagem organizada para iniciar a conversa pelo WhatsApp. A proposta é preparada após entendermos o projeto.</p><div class="diagnostic-note"><strong>Sem preço genérico.</strong> O investimento depende do escopo, da estrutura existente e do resultado esperado.</div></div>
+                    <form id="diagnostic-form" class="diagnostic-form">
+                        <fieldset id="diagnostic-services" aria-describedby="diagnostic-feedback"><legend>1. Em que podemos ajudar?</legend><div class="choice-grid">
+                            <label><input type="checkbox" name="service" value="Site ou landing page"><span>Site ou landing page</span></label>
+                            <label><input type="checkbox" name="service" value="Automação de processos"><span>Automação de processos</span></label>
+                            <label><input type="checkbox" name="service" value="Suporte técnico"><span>Suporte técnico</span></label>
+                            <label><input type="checkbox" name="service" value="Infraestrutura e redes"><span>Infraestrutura e redes</span></label>
+                            <label><input type="checkbox" name="service" value="Painel ou sistema sob medida"><span>Painel ou sistema sob medida</span></label>
+                        </div></fieldset>
+                        <div class="field-row"><label>2. Nome da empresa<input type="text" name="company" placeholder="Como devemos chamar sua empresa?"></label><label>3. Prioridade<select name="priority"><option value="Quero planejar">Quero planejar</option><option value="Preciso resolver em breve">Preciso resolver em breve</option><option value="É urgente">É urgente</option></select></label></div>
+                        <label>4. Resuma a necessidade<textarea name="need" rows="4" placeholder="Ex.: preciso modernizar meu site e organizar os contatos que chegam pelo WhatsApp."></textarea></label>
+                        <p id="diagnostic-feedback" class="form-feedback" role="status" aria-live="polite"></p><button type="submit" class="button button-blue button-full">Iniciar conversa no WhatsApp</button>
                     </form>
-
-                    <!-- Sidebar de Resultado -->
-                    <div id="result-container" class="bg-white border border-slate-900 p-8 shadow-2xl">
-                        <h4 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-900 mb-8 border-b border-slate-100 pb-4">Resumo do Investimento</h4>
-                        
-                        <div id="result-breakdown" class="mb-12">
-                            <p class="text-[10px] text-slate-500 uppercase font-extrabold tracking-widest leading-loose">Selecione os serviços para gerar a estimativa técnica.</p>
-                        </div>
-
-                        <div id="result-total" class="border-t border-slate-100 pt-8 hidden">
-                            <!-- Preenchido via JS -->
-                        </div>
-
-                        <div class="mt-8 space-y-4">
-                            <button onclick="sendQuote()" class="w-full bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest py-5 hover:bg-blue-600 transition-all">Solicitar Proposta</button>
-                            <button onclick="resetCalculator()" class="w-full text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">Limpar Seleção</button>
-                        </div>
-                        
-                        <p class="mt-8 text-[9px] text-slate-400 uppercase leading-loose">
-                            * Valores estimativos baseados em médias de mercado. Uma análise técnica presencial é necessária para o orçamento final.
-                        </p>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Artigos Section -->
-        <section id="artigos" class="py-24 bg-slate-50">
+        <section id="conteudos" class="section section-light">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                    <div class="max-w-2xl">
-                        <h2 class="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Knowledge Base</h2>
-                        <h3 class="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
-                            INSIGHTS ESTRATÉGICOS.
-                        </h3>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                    <article class="group">
-                        <a href="artigo-seguranca.html" class="block">
-                            <div class="aspect-video bg-slate-200 mb-6 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cibersegurança" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                            </div>
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2">Segurança</h4>
-                            <h5 class="text-xl font-bold mb-4 group-hover:text-blue-600 transition-colors">Protocolos de Segurança para Novos Escritórios</h5>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">Como blindar sua infraestrutura digital contra ameaças externas desde o primeiro dia de operação.</p>
-                            <span class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1">Ler Conteúdo</span>
-                        </a>
-                    </article>
-                    <article class="group">
-                        <a href="artigo-produtividade.html" class="block">
-                            <div class="aspect-video bg-slate-200 mb-6 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Produtividade" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                            </div>
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2">Operação</h4>
-                            <h5 class="text-xl font-bold mb-4 group-hover:text-blue-600 transition-colors">TI como Alavanca de Produtividade</h5>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">A relação direta entre a escolha do hardware e o rendimento diário do seu capital humano.</p>
-                            <span class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1">Ler Conteúdo</span>
-                        </a>
-                    </article>
-                    <article class="group">
-                        <a href="artigo-infraestrutura.html" class="block">
-                            <div class="aspect-video bg-slate-200 mb-6 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Infraestrutura" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                            </div>
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2">Infraestrutura</h4>
-                            <h5 class="text-xl font-bold mb-4 group-hover:text-blue-600 transition-colors">Conectividade: O Coração do Escritório Moderno</h5>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">Planejamento de redes Wi-Fi e cabeamento estruturado para evitar gargalos invisíveis.</p>
-                            <span class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1">Ler Conteúdo</span>
-                        </a>
-                    </article>
-                    <article class="group">
-                        <a href="artigo-nuvem.html" class="block">
-                            <div class="aspect-video bg-slate-200 mb-6 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Cloud Computing" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                            </div>
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2">Nuvem</h4>
-                            <h5 class="text-xl font-bold mb-4 group-hover:text-blue-600 transition-colors">O Fim dos Servidores Físicos</h5>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">Por que a migração para a nuvem é o passo definitivo para a mobilidade e segurança total.</p>
-                            <span class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1">Ler Conteúdo</span>
-                        </a>
-                    </article>
+                <div class="section-heading compact-heading"><div><span class="section-kicker">Conteúdos</span><h2>Decisões de tecnologia em linguagem clara.</h2></div></div>
+                <div class="articles-grid">
+                    <a href="artigo-seguranca.html" class="article-card"><span>Segurança</span><h3>Como reduzir riscos digitais na rotina da empresa</h3><p>Práticas essenciais para proteger dados, acessos e equipamentos.</p><strong>Ler conteúdo →</strong></a>
+                    <a href="artigo-produtividade.html" class="article-card"><span>Produtividade</span><h3>Tecnologia que organiza processos e reduz retrabalho</h3><p>Como identificar tarefas que podem ser simplificadas ou automatizadas.</p><strong>Ler conteúdo →</strong></a>
+                    <a href="artigo-infraestrutura.html" class="article-card"><span>Infraestrutura</span><h3>O que avaliar antes de estruturar a TI da empresa</h3><p>Rede, equipamentos, backup e suporte pensados para a operação real.</p><strong>Ler conteúdo →</strong></a>
                 </div>
             </div>
         </section>
 
-        <!-- Contato Section -->
-        <section id="contato" class="py-24 bg-white border-t border-slate-100">
-            <div class="container mx-auto px-6">
-                <div class="max-w-5xl mx-auto">
-                    <div class="grid lg:grid-cols-2 gap-20">
-                        <div>
-                            <h2 class="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Contato Direto</h2>
-                            <h3 class="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 mb-8">
-                                VAMOS CONSTRUIR <br> SUA BASE DIGITAL.
-                            </h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-12">
-                                Estamos prontos para analisar seu projeto e propor a melhor arquitetura tecnológica para o seu novo escritório. O primeiro passo é uma conversa estratégica.
-                            </p>
-                            
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-900">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                    </div>
-                                    <span class="text-xs font-bold uppercase tracking-widest text-slate-900">71 92004-3913</span>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-900">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                    <span class="text-xs font-bold uppercase tracking-widest text-slate-900">naxeltecnologias@gmail.com</span>
-                                </div>
-                        </div>
+        <section id="sobre" class="section section-about">
+            <div class="container mx-auto px-6"><div class="about-grid"><div><span class="section-kicker">Sobre a NaxelTech</span><h2>Desenvolvimento e suporte no mesmo lugar.</h2></div><div class="about-copy"><p>A NaxelTech ajuda pequenas empresas a usar tecnologia de forma prática: construindo presença digital, automatizando rotinas e cuidando da base técnica necessária para o trabalho acontecer.</p><p>Unimos desenvolvimento web, suporte técnico e infraestrutura para propor soluções coerentes com o tamanho, o momento e os objetivos de cada negócio.</p><div class="about-tags"><span>Salvador, Bahia</span><span>Atendimento remoto</span><span>Soluções sob medida</span></div></div></div></div>
+        </section>
 
-                        <form id="contact-form" class="space-y-6">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Nome</label>
-                                    <input type="text" name="name" required class="w-full border-b border-slate-200 py-4 focus:border-slate-900 outline-none transition-colors text-sm">
-                                </div>
-                                <div>
-                                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">E-mail</label>
-                                    <input type="email" name="email" required class="w-full border-b border-slate-200 py-4 focus:border-slate-900 outline-none transition-colors text-sm">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Mensagem</label>
-                                <textarea name="message" rows="4" required class="w-full border-b border-slate-200 py-4 focus:border-slate-900 outline-none transition-colors text-sm resize-none"></textarea>
-                            </div>
-                            <button type="submit" class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-10 py-5 hover:bg-blue-600 transition-all w-full md:w-auto">Enviar Mensagem</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <section id="contato" class="section section-contact">
+            <div class="container mx-auto px-6"><div class="contact-grid">
+                <div class="contact-copy"><span class="section-kicker">Vamos conversar</span><h2>Qual desafio podemos ajudar a resolver?</h2><p>Envie uma mensagem com o contexto do seu projeto. Retornaremos para entender a necessidade e indicar o próximo passo.</p><div class="contact-list"><a href="https://wa.me/5571920043913" target="_blank" rel="noopener"><span>WhatsApp</span><strong>(71) 92004-3913</strong></a><a href="mailto:naxeltecnologias@gmail.com"><span>E-mail</span><strong>naxeltecnologias@gmail.com</strong></a><p><span>Atendimento</span><strong>Salvador e remoto</strong></p></div></div>
+                <form id="contact-form" class="contact-form"><div class="field-row"><label for="name">Nome<input id="name" type="text" name="name" autocomplete="name" required></label><label for="email">E-mail<input id="email" type="email" name="email" autocomplete="email" required></label></div><label for="subject">Assunto<select id="subject" name="subject"><option>Site ou landing page</option><option>Automação ou sistema</option><option>Suporte técnico</option><option>Infraestrutura e redes</option><option>Outro assunto</option></select></label><label for="message">Mensagem<textarea id="message" name="message" rows="5" required></textarea></label><p id="contact-feedback" class="form-feedback" role="status" aria-live="polite"></p><button type="submit" class="button button-dark button-full">Enviar mensagem</button></form>
+            </div></div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-50 py-20 border-t border-slate-100">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-12">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <img src="Design sem nome.png" alt="Naxel Soluções Tecnológicas" class="h-12 w-12 object-contain group-hover:scale-105 transition-all">
-                    <div class="flex flex-col">
-                        <span class="text-base font-black tracking-tighter text-slate-900 leading-none">NAXEL</span>
-                        <span class="text-[8px] font-bold text-slate-500 tracking-[0.2em] leading-none mt-1 uppercase">Soluções Tecnológicas</span>
-                    </div>
-                </a>
-                
-                <div class="flex gap-10">
-                    <a href="#desafio" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">Desafio</a>
-                    <a href="#servicos" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">Serviços</a>
-                    <a href="#artigos" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">Artigos</a>
-                </div>
+    <a class="whatsapp-float" href="https://wa.me/5571920043913" target="_blank" rel="noopener" aria-label="Falar com a NaxelTech pelo WhatsApp"><span aria-hidden="true">↗</span> Falar no WhatsApp</a>
 
-                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    © 2026 NaxelTech. Todos os direitos reservados.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Inicialização das animações quando a página carrega
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof initAnimations === 'function') {
-                initAnimations();
-            }
-            if (typeof initCalculator === 'function') {
-                initCalculator();
-            }
-        });
-    </script>
+    <footer class="site-footer"><div class="container mx-auto px-6"><div class="footer-top"><a href="#inicio" class="brand brand-footer"><span class="brand-logo-crop"><img src="assets/brand/naxeltech-logo-atualizada.jpeg" alt=""></span><span class="brand-name">Naxel<span>Tech</span></span></a><p>Tecnologia sob medida para simplificar processos e impulsionar negócios.</p><div class="footer-links"><a href="#solucoes">Soluções</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a href="politica-privacidade.html">Privacidade</a></div></div><div class="footer-bottom"><span>© 2026 NaxelTech. Todos os direitos reservados.</span><span>Salvador, Bahia · Atendimento remoto</span></div></div></footer>
 </body>
 </html>
